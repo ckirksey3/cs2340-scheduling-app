@@ -52,7 +52,7 @@ public class Person2 {
 	 *
 	 * @param input the varying string
 	 * @return the string representing the 
-	 *         object
+	 *         objec
 	 */
 	public String toString(String input) {
 	  return name + calc(input);
