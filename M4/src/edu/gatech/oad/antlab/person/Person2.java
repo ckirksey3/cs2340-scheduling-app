@@ -11,6 +11,7 @@ package edu.gatech.oad.antlab.person;
 public class Person2 {
     /** Holds the persons real name */
     private String name;
+    
 	 	/**
 	 * The constructor, takes in the persons
 	 * name
@@ -19,6 +20,7 @@ public class Person2 {
 	 public Person2(String pname) {
 	   name = pname;
 	 }
+	 
 	/**
 	 * This method should take the string
 	 * input and return its characters in
@@ -30,9 +32,20 @@ public class Person2 {
 	 * @return the modified string
 	 */
 	private String calc(String input) {
-	  //Person 2 put your implementation here
-	  return null;
+	  int i=0;
+	  int x;
+	  int len = input.length();
+	  String s = "";
+	  while (i<len){
+			x = int(floor(Math.random()*input.length()));
+			s[i] = input[x]
+			for (int i=x; i<input.length()-1; i++){
+				input[i] = input[i+1];
+			}
+	  }
+	  return s;
 	}
+	
 	/**
 	 * Return a string rep of this object
 	 * that varies with an input string
