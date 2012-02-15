@@ -32,9 +32,15 @@ public class Person4 {
     private String calc(String input) {
       //Person 1 put your implementation here
     	char[] outputChars = new char[input.length()];
+    	int newIndex = 0;
     	for(int i = 0; i<input.length(); i++)
     	{
-    		outputChars[i-2]= input.charAt(i);
+    		newIndex = i - 2;
+    		if(newIndex < 0)
+    		{
+    			newIndex = input.length()- 2 + i;
+    		}
+    		outputChars[newIndex]= input.charAt(i);
     	}
     	String result = new String(outputChars);
       return result;
