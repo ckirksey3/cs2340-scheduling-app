@@ -42,6 +42,7 @@ public class Person2 {
 			for (int j=x; j<input.length()-1; j++){
 				input.charAt(j) = input.charAt(j+1);
 			}
+			input.charAt(input.length()) = null;
 	  }
 	  return s;
 	}
