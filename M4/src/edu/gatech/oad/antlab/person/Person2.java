@@ -39,8 +39,8 @@ public class Person2 {
 	  while (i<len){
 			x = int(floor(Math.random()*input.length()));
 			s[i] = input.charAt(x);
-			for (int i=x; i<input.length()-1; i++){
-				input.charAt(i) = input.charAt(i+1);
+			for (int j=x; j<input.length()-1; j++){
+				input.charAt(j) = input.charAt(j+1);
 			}
 	  }
 	  return s;
