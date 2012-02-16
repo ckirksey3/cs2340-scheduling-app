@@ -12,7 +12,7 @@
 		<property name="ant.project.name" value="AntLabRun.jar"/>
 	</target>
 
-	<target name="prepare">
+	<target name="prepare" depends="init">
 		<mkdir dir="${classes.dir}"/>
 		<mkdir dir="${jar.dir}"/>
 		<mkdir dir="${docs.dir}"/>
