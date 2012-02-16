@@ -1,0 +1,65 @@
+<!-- M4 Ant build file -->
+<!-- build.xml -->
+<project name="M4" basedir="." default="all">
+	
+	<target name="init"> 
+		<property name="src.dir" value="src"/>
+		<property name="build.dir" value="build"/>
+		<property name="classes.dir" value="${build.dir}/classes"/>
+		<property name="library.dir" value="lib"/>
+		<property name="jar.dir" value="${build.dir}/jar"/>
+		<property name="javadocs.dir" value="apidoc"/>
+		<property name="main-class" value="edu/gatech/oad/antlab/pkg1/AntLabMain"/>
+	</target>
+	
+	<target name="prepare" depends="init">
+		<mkdir dir="${build.dir}"/>
+		<mkdir dir="${classes.dir}"/>
+		<mkdir dir="${jar.dir}"/>
+	</target>
+	
+	<target name="compile" depends="prepare">
+		<javac destdir="${build.dir}">
+			<src path="${src.dir}"/>
+			<classpath>
+				<pathelement path="${build.dir}"/>
+				<pathelement path="${library.dir}"/>
+			</classpath>
+		</javac>
+	</target>
+	
+	<target name="javadoc" depends="prepare">
+		<javadoc sourcepath="${src.dir}" access="public" destdir="${docs}/javadoc"
+			packagenames="edu.gatech.oad.antdemo">
+		<excludepackage name="edu.gt.cs2340.lab2.test.*"/>
+		<fileset dir="${src.dir}">
+			<include name="**/*.java"/>
+		</fileset>
+		<bottom>
+			<![CDATA[<i>Copyright 2012 Team High Ceiling CS2340. All Rights Reserved.</i>]]>
+		</bottom>
+		</javadoc>
+	</target>
+		
+		
+	<target name="jar" depends="compile">
+		<jar destfile="${jar.dir}/AntLabRun.jar" basedir="${classes.dir}">
+			<include name="lib/resources.jar"/>
+			<manifest>
+				<attribute name="Main-Class" value="${main-class}"/>
+				<attribute name="Class-Path" value="resources.jar" />
+			</manifest>
+		</jar>
+	</target>
+	
+	<target name="run" depends="jar">
+		<java jar="${jar.dir}/AntLabRun.jar" fork="true"/>
+	</target>
+
+	<target name="all" depends="init,prepare,compile,javadoc,jar,run"/>
+
+	<target name="clean">
+			<delete dir="${build.dir}"/>
+	</target>
+	
+</project>
