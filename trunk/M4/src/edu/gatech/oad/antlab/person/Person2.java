@@ -43,7 +43,7 @@ public class Person2 {
 		 for (int i = 0; i<len; i++){
 			 x = (int) (Math.floor(Math.random()*(input.length()-i)));
 			 ans[i] = in[x];
-			 for (int j=x; j<input.length()-i; j++){
+			 for (int j=x; j<input.length()-i-1; j++){
 				 in[j] = in[j+1];
 			 }
 		 }
