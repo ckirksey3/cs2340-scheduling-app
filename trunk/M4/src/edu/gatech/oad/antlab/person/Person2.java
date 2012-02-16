@@ -31,22 +31,25 @@ public class Person2 {
 	 * @param input the string to be modified
 	 * @return the modified string
 	 */
-	private String calc(String input) {
-	  int i=0;
-	  int x;
-	  int len = input.length();
-	  String s = "";
-	  while (i<len){
-			x = int(floor(Math.random()*input.length()));
-			s[i] = input.charAt(x);
-			for (int j=x; j<input.length()-1; j++){
-				input.charAt(j) = input.charAt(j+1);
-			}
-			input.charAt(input.length()) = null;
-	  }
-	  return s;
-	}
-	
+
+	 private String calc(Sting input){
+	 int x;
+	 int len = input.length();
+	 char[] ans = new char[input.length()];
+	 char[] in = new char[input.length()];
+	 for (int j=0; j<len; j++){
+	 	  in[j]=input.charAt(j);
+	 }
+	 for (int i = 0; i<len; i++){
+		 x = (int) (Math.floor(Math.random()*input.length()-i));
+		 ans[i] = in[x];
+	 }
+	 for (int j=x; j<input.length()-1; j++){
+		 in[j] = in[j+1];
+	 }
+	 String result = new String(ans);
+	 return result;
+	 }
 	/**
 	 * Return a string rep of this object
 	 * that varies with an input string
