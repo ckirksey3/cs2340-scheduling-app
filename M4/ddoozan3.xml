@@ -8,7 +8,7 @@
 		<property name="jar.dir" value="${build.dir}/jar"/>
 		<property name="main-class" value="edu/gatech/oad/antlab/phg1/AntLabMain"/>
 		<property name="resources.file" value="lib/resources.jar"/>
-		<property name="docs.dir" value="${build.dir}/apidocs"/>
+		<property name="docs.dir" value="apidocs"/>
 		<property name="ant.project.name" value="AntLabRun.jar"/>
 	</target>
 
@@ -55,6 +55,7 @@
 
 	<target name="clean">
 		<delete dir="${build.dir}"/>
+		<delete dir="${docs.dir}"/>
 	</target>
 	
 	
