@@ -43,7 +43,11 @@ public class Person2 {
 		 for (int i = 0; i<len; i++){
 			 x = (int) (Math.floor(Math.random()*(input.length()-i)));
 			 ans[i] = in[x];
+			 for (int j=x; j<input.length()-i; j++){
+				 in[j] = in[j+1];
+			 }
 		 }
+
 		 String result = new String(ans);
 		 return result;
 	 }
