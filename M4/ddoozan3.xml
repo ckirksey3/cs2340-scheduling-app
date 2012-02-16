@@ -27,9 +27,9 @@
 	</target>
 
 	<target name="javadoc" depends="prepare">
-		<javadoc sourcepath="${src.dir}" access="public" destdir="${docs.dir}/javadoc" packagenames="edu.gatech.oad.antlab.person">
+		<javadoc sourcepath="${src.dir}" access="public" destdir="${docs.dir}/javadoc"packagenames="edu.gatech.oad.antlab.person">
 			<fileset dir="${src.dir}">
-				<include name="**/*.java">
+				<include name="**/*.java"/>
 			</fileset>
 			<bottom>
 				<![CDATA[<i>Copyright &#169; 2012 Team High Ceiling CS2340. All Rights Reserved.</i>]]>
