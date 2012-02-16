@@ -41,11 +41,8 @@ public class Person2 {
 		 	  in[j]=input.charAt(j);
 		 }
 		 for (int i = 0; i<len; i++){
-			 x = (int) (Math.floor(Math.random()*input.length()-i));
+			 x = (int) (Math.floor(Math.random()*(input.length()-i)));
 			 ans[i] = in[x];
-		 }
-		 for (int j=x; j<input.length()-1; j++){
-			 in[j] = in[j+1];
 		 }
 		 String result = new String(ans);
 		 return result;
