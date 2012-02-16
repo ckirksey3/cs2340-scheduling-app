@@ -27,7 +27,7 @@
 	</target>
 
 	<target name="javadoc" depends="prepare">
-		<javadoc sourcepath="${src.dir}" access="public" destdir="${docs.dir}/javadoc"packagenames="edu.gatech.oad.antlab.person">
+		<javadoc sourcepath="${src.dir}" access="public" destdir="${docs.dir}/javadoc" packagenames="edu.gatech.oad.antlab.person">
 			<fileset dir="${src.dir}">
 				<include name="**/*.java"/>
 			</fileset>
