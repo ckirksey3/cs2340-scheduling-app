@@ -2,37 +2,42 @@
 <!-- build.xml -->
 <project name="M4" basedir="." default="main">
 
+	
 	<target name="init">
 		<property name="src.dir" value="src"/>
-	</target>
-
-	<target name="prepare">
 		<property name="build.dir" value="build"/>
 		<property name="classes.dir" value="${build.dir}/classes"/>
 		<property name="jar.dir" value="${build.dir}/jar"/>
 		<property name="main-class" value="oata.M4"/>
 	</target>
 
-	<target name="compile">
-		<mkdir dir="${classes.dir}"/>
-		<javac srcdir="${src.dir}" destdir="${classes.dir}"/>
+	<target name="prepare" depends="init">
+			<mkdir dir ="classes" />
+			<mkdir dir="jar" />
+			<mkdir dir="docs" />
 	</target>
 
-	<target name="javadoc">
+	<target name="compile" depends="prepare">
+		<javac srcdir="${src.dir}" destdir="${classes.dir}">
+			<classpath>
+				<pathelement path="${additional.path}"/>
+			</classpath>
+		</javac>
+	</target>
+
+	<target name="javadoc" depends="prepare">
 		<javadoc sourcepath="${src.dir}" access="public" destdir="${docs}/javadoc"
 			packagenames="edu.gatech.oad.antlab">
-		<excludepackage name="edu.gatech.oad.antlab.pkg1.AntLabMain.*"/>
-		<fileset dir="${src.dir}">
-			<include name="**/*.java"/>
-		</fileset>
-		<bottom>
-			<![CDATA[<i>2012 Team High Ceiling CS2340</i>]]>
-		</bottom>
+			<fileset dir="${src.dir}">
+				<include name="**/*.java"/>
+			</fileset>
+			<bottom>
+				<![CDATA[<i>2012 Team High Ceiling CS2340</i>]]>
+			</bottom>
 		</javadoc>
 	</target>
 
 	<target name="jar" depends="compile">
-		<mkdir dir="${jar.dir}"/>
 		<jar destfile="${jar.dir}/${ant.project.name}.jar" basedir="${classes.dir}">
 			<manifest>
 				<attribute name="Main-Class" value="edu.gatech.oad.antlab.pkg1.AntLabMain"/>
@@ -47,7 +52,7 @@
 
 	<target name="all" depends="init, prepare, compile, javadoc, jar, run" />
 
-	<target name="clean">
+	<target name="clean" depends="prepare">
 		<delete dir="${build.dir}"/>
 	</target>
 
