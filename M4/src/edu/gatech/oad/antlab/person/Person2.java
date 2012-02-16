@@ -33,7 +33,7 @@ public class Person2 {
 	 */
 
 	 private String calc(String input){
-		 int x;
+		 int x=0;
 		 int len = input.length();
 		 char[] ans = new char[input.length()];
 		 char[] in = new char[input.length()];
