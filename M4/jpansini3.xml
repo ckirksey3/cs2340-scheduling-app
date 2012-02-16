@@ -1,0 +1,42 @@
+<!-- Ant File -->
+<!-- build.xml -->
+<project name="M4" basedir="." default="main">
+<target name="init">
+	<property name="src.dir" value="src"/>
+	<property name="build.dir" value="build"/>
+	<property name="additional.path" value="lib/resources.jar"/>
+	<property name="classes.dir" value="${build.dir}/classes"/>
+	<property name="jar.dir" value="."/>
+	<property name="main-class" value="edu/gatech/oad/antlab/pkg1/AntLabMain"/>
+</target>
+	
+<target name="clean">
+	<delete dir="${build.dir}"/>
+</target>
+	
+<target name="compile" depends="init">
+	<mkdir dir="${classes.dir}"/>
+	<javac srcdir="${src.dir}" destdir="${classes.dir}">
+		<classpath>
+			<pathelement path="${additional.path}"/>
+		</classpath>
+	</javac>
+</target>
+
+<target name="jar" depends="compile">
+	<mkdir dir="${jar.dir}"/>
+<jar destfile="${jar.dir}/${ant.project.name}.jar" basedir="${classes.dir}">
+	<manifest>
+		<attribute name="Main-Class" value="${main-class}"/>
+		<attribute name="Class-Path" value="${additional.path}"/>
+	</manifest>
+</jar>
+</target>
+	
+<target name="run" depends="jar">
+	<java jar="${jar.dir}/${ant.project.name}.jar" fork="true"/>
+</target>
+	
+<target name="clean-build" depends="clean,jar"/>
+<target name="main" depends="clean,run"/>
+</project>
