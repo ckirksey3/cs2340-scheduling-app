@@ -2,20 +2,39 @@
 <!-- build.xml -->
 <project name="M4" basedir="." default="main">
 <target name="init">
+	<property name="ant.project.name" value ="antLabRun.jar"/>
 	<property name="src.dir" value="src"/>
 	<property name="build.dir" value="build"/>
 	<property name="additional.path" value="lib/resources.jar"/>
 	<property name="classes.dir" value="${build.dir}/classes"/>
 	<property name="jar.dir" value="."/>
+	<property name="docs.dir" value="apidocs"/>
 	<property name="main-class" value="edu/gatech/oad/antlab/pkg1/AntLabMain"/>
+</target>
+	
+<target name="prepare">
+	<mkdir dir="classes"/>
+	<mkdir dir="jar"/>
+	<mkdir dir="docs"/>
+</target>
+	
+<target name="javadoc" depends="prepare">
+	<javadoc sourcepath="${src.dir}" access="public" destdir="${docs}/javadoc">
+	packagenames="edu.gatech.oad.antlab">
+	<fileset dir="${src.dir}">
+	<include name="**/*.java"/>
+	</fileset>
+	<bottom>
+	<![CDATA[<i> Team High Ceiling, CS2340, 2012</i>]]>
+	</bottom>
+	</javadoc>
 </target>
 	
 <target name="clean">
 	<delete dir="${build.dir}"/>
 </target>
 	
-<target name="compile" depends="init">
-	<mkdir dir="${classes.dir}"/>
+<target name="compile" depends="init,prepare">
 	<javac srcdir="${src.dir}" destdir="${classes.dir}">
 		<classpath>
 			<pathelement path="${additional.path}"/>
@@ -24,7 +43,6 @@
 </target>
 
 <target name="jar" depends="compile">
-	<mkdir dir="${jar.dir}"/>
 <jar destfile="${jar.dir}/${ant.project.name}.jar" basedir="${classes.dir}">
 	<manifest>
 		<attribute name="Main-Class" value="${main-class}"/>
@@ -36,7 +54,8 @@
 <target name="run" depends="jar">
 	<java jar="${jar.dir}/${ant.project.name}.jar" fork="true"/>
 </target>
+
+<target name= "all" depends="init,prepare,compile,jar,run,javadoc"/>
 	
-<target name="clean-build" depends="clean,jar"/>
 <target name="main" depends="clean,run"/>
 </project>
