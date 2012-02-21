@@ -22,5 +22,14 @@ public class LetMeCheckMyAppActivity extends Activity {
 				startActivityForResult(myIntent, 0);
 			}
 		});
+        Button signInButton = (Button)findViewById(R.id.signInButton);
+        registerNewUser.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View view) {
+				// TODO Auto-generated method stub
+				//setContentView(R.layout.taskList);
+			}
+		});
     }
 }
