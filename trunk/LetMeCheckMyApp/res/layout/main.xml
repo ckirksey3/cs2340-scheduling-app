@@ -10,22 +10,23 @@
         android:text="Login" />
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/userNameText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
-        android:hint="User name" >
+        android:hint="User name"
+        android:nextFocusRight="@+id/passwordText">
 
         <requestFocus />
     </EditText>
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/passwordText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
-        android:hint="Password" />
+        android:hint="Password50" />
 
 	<Button
         android:id="@+id/signInButton"
