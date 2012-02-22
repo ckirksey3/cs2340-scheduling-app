@@ -18,8 +18,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity  android:name=".RegisterUser"></activity>
-        <activity  android:name=".ManageTaskList"></activity>
+        <activity  android:name=".RegisterUser"><intent-filter >
+                <action android:name="android.intent.action.REGISTRATION" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        	
+        <activity  android:name=".ManageTaskList">
+            <intent-filter >
+                <action android:name="android.intent.action.TASKLIST" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
