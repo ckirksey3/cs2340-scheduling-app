@@ -11,6 +11,6 @@ public class ManageTaskList extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.registration);
+        setContentView(R.layout.tasklist);
     }
 }
