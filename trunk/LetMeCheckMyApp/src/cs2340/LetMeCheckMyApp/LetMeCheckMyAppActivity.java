@@ -12,8 +12,8 @@ public class LetMeCheckMyAppActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        Button registerNewUser = (Button)findViewById(R.id.registerNewButton);
-        registerNewUser.setOnClickListener(new View.OnClickListener() {
+        Button registerNewUserButton = (Button)findViewById(R.id.registerNewButton);
+        registerNewUserButton.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View view) {
@@ -23,12 +23,13 @@ public class LetMeCheckMyAppActivity extends Activity {
 			}
 		});
         Button signInButton = (Button)findViewById(R.id.signInButton);
-        registerNewUser.setOnClickListener(new View.OnClickListener() {
+        signInButton.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View view) {
 				// TODO Auto-generated method stub
-				//setContentView(R.layout.taskList);
+				Intent myIntent = new Intent(view.getContext(), ManageTaskList.class);
+				startActivityForResult(myIntent, 0);
 			}
 		});
     }

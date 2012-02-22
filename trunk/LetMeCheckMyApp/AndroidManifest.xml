@@ -19,6 +19,7 @@
             </intent-filter>
         </activity>
         <activity  android:name=".RegisterUser"></activity>
+        <activity  android:name=".ManageTaskList"></activity>
     </application>
 
 </manifest>

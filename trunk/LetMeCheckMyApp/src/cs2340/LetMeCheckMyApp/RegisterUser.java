@@ -15,9 +15,9 @@ public class RegisterUser extends Activity {
 	    Button next = (Button) findViewById(R.id.button1);
 	    next.setOnClickListener(new View.OnClickListener() {
 	        public void onClick(View view) {
-	            /*Intent intent = new Intent();
+	            Intent intent = new Intent();
 	            setResult(RESULT_OK, intent);
-	            finish();*/
+	            finish();
 	        }
 
 	    });}
