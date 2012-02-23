@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+
 public class LetMeCheckMyAppActivity extends Activity {
     /** Called when the activity is first created. */
     @Override
@@ -27,7 +28,9 @@ public class LetMeCheckMyAppActivity extends Activity {
         Button signInButton = (Button)findViewById(R.id.signInButton);
         signInButton.setOnClickListener(new View.OnClickListener() {
 			
-			@Override
+			/**
+			 * 
+			 */
 			public void onClick(View view) {
 				// TODO Auto-generated method stub
 				Intent myIntent = new Intent(view.getContext(), ManageTaskList.class);
