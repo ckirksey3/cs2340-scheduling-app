@@ -28,9 +28,9 @@ public class RegisterUser extends Activity {
 	    	 * and the screen will change.
 	    	 */
 	        public void onClick(View view) {
-	            Intent intent = new Intent();
-	            setResult(RESULT_OK, intent);
-	            finish();
+				// TODO Auto-generated method stub
+				Intent myIntent = new Intent(view.getContext(), ManageTaskList.class);
+				startActivityForResult(myIntent, 0);
 	        }
 	    });
 	}
