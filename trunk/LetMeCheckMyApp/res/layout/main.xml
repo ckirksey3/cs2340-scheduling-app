@@ -7,7 +7,7 @@
         <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Login" />
+        android:text="login" />
 
     <EditText
         android:id="@+id/userNameText"
@@ -15,6 +15,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:hint="User name"
         android:nextFocusDown="@+id/passwordText">
 
@@ -25,19 +27,26 @@
         android:id="@+id/passwordText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:inputType="textPassword"
-        android:hint="Password50" />
+        android:hint="Password" />
 
 	<Button
         android:id="@+id/signInButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:text="Sign In" />
     
     <Button
         android:id="@+id/registerNewButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:text="Register New Account" />
     
 </LinearLayout>
