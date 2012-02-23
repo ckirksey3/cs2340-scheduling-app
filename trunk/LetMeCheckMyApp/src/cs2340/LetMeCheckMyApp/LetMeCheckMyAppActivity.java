@@ -13,7 +13,9 @@ public class LetMeCheckMyAppActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         Button registerNewUserButton = (Button)findViewById(R.id.registerNewButton);
-        registerNewUserButton.setOnClickListener(new View.OnClickListener() {
+        registerNewUserButton.setOnClickListener(new View.OnClickListener()
+        
+        {
 			
 			@Override
 			public void onClick(View view) {
