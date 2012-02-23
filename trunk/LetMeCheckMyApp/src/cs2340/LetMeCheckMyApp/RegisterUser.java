@@ -19,6 +19,6 @@ public class RegisterUser extends Activity {
 	            setResult(RESULT_OK, intent);
 	            finish();
 	        }
-
-	    });}
+	    });
+	}
 }
