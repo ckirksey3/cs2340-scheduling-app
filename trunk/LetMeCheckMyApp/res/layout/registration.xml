@@ -13,7 +13,7 @@
 
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/newUserNameText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
@@ -24,13 +24,13 @@
     </EditText>
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/newUserEmailText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Email" />
     
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/newUserPasswordText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
