@@ -3,5 +3,6 @@
 
     <string name="hello">Hello World, LetMeCheckMyAppActivity!</string>
     <string name="app_name">LetMeCheckMyApp</string>
+    <string name="Cancel">Cancel</string>
 
 </resources>

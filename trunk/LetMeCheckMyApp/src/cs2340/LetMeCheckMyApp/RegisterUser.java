@@ -30,5 +30,12 @@ public class RegisterUser extends Activity {
 				startActivityForResult(myIntent, 0);
 	        }
 	    });
+	    Button cancel = (Button) findViewById(R.id.button2);
+	    cancel.setOnClickListener(new View.OnClickListener() {
+	    	/** When the registration button is clicked, this code is executed */
+	        public void onClick(View view) {
+	        	finish();
+	        }
+	    });
 	}
 }
