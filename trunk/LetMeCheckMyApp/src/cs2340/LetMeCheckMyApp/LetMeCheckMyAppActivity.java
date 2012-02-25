@@ -18,7 +18,6 @@ public class LetMeCheckMyAppActivity extends Activity {
         
         {
 			
-			@Override
 			public void onClick(View view) {
 				// TODO Auto-generated method stub
 				Intent myIntent = new Intent(view.getContext(), RegisterUser.class);
