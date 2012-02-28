@@ -1,5 +1,13 @@
 package cs2340.LetMeCheckMyApp;
 
+/**
+ * 
+ * Information holder for a user
+ * 
+ * 
+ * @author Caleb
+ *
+ */
 public class AppUser {
 	private String name;
 	private String email;
@@ -10,6 +18,7 @@ public class AppUser {
 		this.email = email;
 		this.password = password;
 	}
+	/* Returns true if the typed name and password matches this user object */
 	public boolean isMatch(String inputName, String inputPassword)
 	{
 		if(inputName == name && inputPassword==password)

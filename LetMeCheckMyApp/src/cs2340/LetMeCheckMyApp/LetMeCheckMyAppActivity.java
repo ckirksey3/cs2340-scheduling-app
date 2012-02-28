@@ -16,7 +16,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-
+/**
+ * 
+ * The activity class for 
+ * the login screen
+ * 
+ * 
+ * @author Jeff
+ *
+ */
 public class LetMeCheckMyAppActivity extends Activity {
     private final String USER_FILE = "users.dat";
 	
@@ -31,6 +39,7 @@ public class LetMeCheckMyAppActivity extends Activity {
         Button registerNewUserButton = (Button)findViewById(R.id.registerNewButton);
         registerNewUserButton.setOnClickListener(new View.OnClickListener()
         {
+        	/** When the register new user button is clicked, this code is executed */
 			public void onClick(View view) {
 				Intent myIntent = new Intent(view.getContext(), RegisterUser.class);
 				startActivityForResult(myIntent, 0);
@@ -38,6 +47,7 @@ public class LetMeCheckMyAppActivity extends Activity {
 		});
         Button signInButton = (Button)findViewById(R.id.signInButton);
         signInButton.setOnClickListener(new View.OnClickListener() {
+        	/** When the sign in button is clicked, this code is executed */
 			public void onClick(View view) {
 				String username = userNameET.getText().toString();
                 String password = passwordET.getText().toString();
