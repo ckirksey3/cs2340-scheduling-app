@@ -9,17 +9,17 @@
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="login" />
+        android:text="Manage Tasks" />
 
     <Button
-        android:id="@+id/Button01"
+        android:id="@+id/AddTaskButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Add New Task" />
 
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/DeleteTaskButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Delete Task" />

@@ -28,7 +28,9 @@ import android.widget.Toast;
 public class LetMeCheckMyAppActivity extends Activity {
     private final String USER_FILE = "users.dat";
 	
-	/** Called when the activity is first created. */
+	/** 
+	 * Called when the activity is first created. 
+	 * */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +41,9 @@ public class LetMeCheckMyAppActivity extends Activity {
         Button registerNewUserButton = (Button)findViewById(R.id.registerNewButton);
         registerNewUserButton.setOnClickListener(new View.OnClickListener()
         {
-        	/** When the register new user button is clicked, this code is executed */
+        	/** 
+        	 * When the register new user button is clicked, this code is executed 
+        	 * */
 			public void onClick(View view) {
 				Intent myIntent = new Intent(view.getContext(), RegisterUser.class);
 				startActivityForResult(myIntent, 0);
@@ -47,7 +51,9 @@ public class LetMeCheckMyAppActivity extends Activity {
 		});
         Button signInButton = (Button)findViewById(R.id.signInButton);
         signInButton.setOnClickListener(new View.OnClickListener() {
-        	/** When the sign in button is clicked, this code is executed */
+        	/** 
+        	 * When the sign in button is clicked, this code is executed 
+        	 * */
 			public void onClick(View view) {
 				String username = userNameET.getText().toString();
                 String password = passwordET.getText().toString();

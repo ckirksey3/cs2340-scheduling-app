@@ -1,52 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
     android:background="@drawable/background"
-    android:tileMode="repeat" >
-
-<TextView
+    android:tileMode="repeat">
+    
+    <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Register New User" />
-
+        android:text="Add Task" />
 
     <EditText
-        android:id="@+id/newUserNameText"
+        android:id="@+id/TaskNameText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
-        android:hint="User name" >
+        android:hint="Task name" >
 
         <requestFocus />
     </EditText>
-
-    <EditText
-        android:id="@+id/newUserEmailText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Email" />
     
-    <EditText
-        android:id="@+id/newUserPasswordText"
+        <EditText
+        android:id="@+id/TaskDescriptionText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:hint="Password" />
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:hint="Description" >
+
+        <requestFocus />
+    </EditText>
+    
+    <Button
+        android:id="@+id/CompleteAddTaskButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Task" />
 
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/CancelAddTaskButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Register" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/Cancel" />
+        android:text="Cancel" />
+
 
 </LinearLayout>
