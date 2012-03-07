@@ -35,5 +35,14 @@ public class AddTask extends Activity {
 				
 			}
 		});
+        
+        // adds cancel button functionality
+        Button cancelButton = (Button)findViewById(R.id.CancelAddTaskButton);
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				setResult(RESULT_CANCELED);
+				finish();
+			}
+		});
     }
 }
