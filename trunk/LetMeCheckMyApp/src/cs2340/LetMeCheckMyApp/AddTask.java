@@ -15,6 +15,7 @@ public class AddTask extends Activity {
         setContentView(R.layout.addtask);
         
         final EditText taskNameET = (EditText) findViewById(R.id.TaskNameText);
+        final EditText descriptionET = (EditText) findViewById(R.id.TaskDescriptionText);
         
         Button addTaskButton = (Button)findViewById(R.id.CompleteAddTaskButton);
         addTaskButton.setOnClickListener(new View.OnClickListener() {
@@ -26,8 +27,9 @@ public class AddTask extends Activity {
 				 * Return the added task to the calling activity
 				 */
 				String taskName = taskNameET.getText().toString();
+				String description = descriptionET.getText().toString();
 				if (taskName != "") {
-	            	setResult(RESULT_OK, new Intent().putExtra("AddTask", taskName));
+	            	setResult(RESULT_OK, new Intent().putExtra("AddTask", new Task(taskName,description)));
 	            	finish();
 				}
 			}
