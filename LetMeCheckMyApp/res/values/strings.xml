@@ -4,5 +4,8 @@
     <string name="hello">Hello World, LetMeCheckMyAppActivity!</string>
     <string name="app_name">LetMeCheckMyApp</string>
     <string name="Cancel">Cancel</string>
+    <string name="AddTaskHelper">Task name</string>
+    <string name="AddTaskDescriptionHelper">Description</string>
+    <string name="AddTask">Add Task</string>
 
 </resources>
