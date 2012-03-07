@@ -59,7 +59,7 @@ public class RegisterUser extends Activity {
 	        		//start task lists
 	        		displayMessage("Registration Succesful!");
 	        		Intent myIntent = new Intent(view.getContext(), ManageTaskList.class);
-    				startActivityForResult(myIntent, 0);
+    				startActivity(myIntent);
 				}else{
 					displayMessage("Username or email is already registered.");
                 }
