@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical"
     android:background="@drawable/background"
-    android:tileMode="repeat">
-    
+    android:orientation="vertical"
+    android:tileMode="repeat" >
+
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Add Task" />
+        android:text="@string/AddTask" />
 
     <EditText
         android:id="@+id/TaskNameText"
@@ -18,34 +17,32 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
-        android:hint="Task name" >
+        android:hint="@string/AddTaskHelper"
+        android:singleLine="true" >
 
         <requestFocus />
     </EditText>
-    
-        <EditText
+
+    <EditText
         android:id="@+id/TaskDescriptionText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
-        android:hint="Description" >
-
-        <requestFocus />
+        android:hint="@string/AddTaskDescriptionHelper"
+        android:singleLine="false" >
     </EditText>
-    
+
     <Button
         android:id="@+id/CompleteAddTaskButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add Task" />
-
+        android:text="@string/AddTask" />"
 
     <Button
         android:id="@+id/CancelAddTaskButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Cancel" />
-
+        android:text="@string/Cancel" />
 
 </LinearLayout>

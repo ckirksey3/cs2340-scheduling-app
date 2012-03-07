@@ -23,7 +23,6 @@ public class AddTask extends Activity {
         	 * When the sign in button is clicked, this code is executed 
         	 */
 			public void onClick(View view) {
-				
 				/*
 				 * Return the added task to the calling activity
 				 */
@@ -32,7 +31,6 @@ public class AddTask extends Activity {
 	            	setResult(RESULT_OK, new Intent().putExtra("AddTask", taskName));
 	            	finish();
 				}
-				
 			}
 		});
         
