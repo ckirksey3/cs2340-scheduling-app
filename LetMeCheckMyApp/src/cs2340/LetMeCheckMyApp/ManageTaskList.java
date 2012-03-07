@@ -12,7 +12,7 @@ import android.widget.ListView;
 
 public class ManageTaskList extends Activity {
 	
-	ArrayList<String> list;
+	ArrayList<Task> list;
 	
 	/** Called when the activity is first created. */
 	@Override
@@ -22,9 +22,9 @@ public class ManageTaskList extends Activity {
 
 		ListView listview = (ListView) findViewById(R.id.TaskList);
 		//TODO attempt to load the user's list from storage
-		list = new ArrayList<String>();
-		final ArrayAdapter<String> adapter;
-		adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, list);
+		list = new ArrayList<Task>();
+		final ArrayAdapter<Task> adapter;
+		adapter = new ArrayAdapter<Task>(this, android.R.layout.simple_list_item_1, list);
 		listview.setAdapter(adapter);
 
 		Button addTaskButton = (Button)findViewById(R.id.AddTaskButton);
@@ -42,10 +42,9 @@ public class ManageTaskList extends Activity {
 	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		// TODO Auto-generated method stub
 		super.onActivityResult(requestCode, resultCode, data);
 		if (resultCode == RESULT_OK) {
-			list.add(data.getStringExtra("AddTask"));
+			list.add((Task)data.getSerializableExtra("AddTask"));
 		}
 	}
 	
