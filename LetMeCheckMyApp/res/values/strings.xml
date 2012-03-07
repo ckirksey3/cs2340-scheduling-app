@@ -7,5 +7,7 @@
     <string name="AddTaskHelper">Task name</string>
     <string name="AddTaskDescriptionHelper">Description</string>
     <string name="AddTask">Add Task</string>
+    <string name="AddTaskCategoryHelper">Category (ex: Work, School, etc)</string>
+    <string name="AddTaskDateHelper">Date (MM/DD/YYYY)</string>
 
 </resources>

@@ -1,14 +1,15 @@
 package cs2340.LetMeCheckMyApp;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Task implements Serializable {
 
 	private static final long serialVersionUID = -8558142619554107137L;
 	private String name;
 	private String description;
-	//private Location location;
-	//etc...
+	private String category;
+	private Date completeDate;
 	
 	public Task() {
 		this("defaultName","");
@@ -23,6 +24,13 @@ public class Task implements Serializable {
 		this.description = description;
 	}
 	
+	public Task(String name, String description, String category, Date completeDate) {
+		this.name = name;
+		this.description = description;
+		this.category = category;
+		this.completeDate = completeDate;
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -35,6 +43,19 @@ public class Task implements Serializable {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	public void setCategory(String category){
+		this.category = category;
+	}
+	public String getCategory(){
+		return category;
+	}
+	public void setCompleteDate(Date completeDate){
+		this.completeDate = completeDate;
+	}
+	public Date getCompleteDate(){
+		return completeDate;
+	}
+	
 	
 	@Override
 	public String toString() {
