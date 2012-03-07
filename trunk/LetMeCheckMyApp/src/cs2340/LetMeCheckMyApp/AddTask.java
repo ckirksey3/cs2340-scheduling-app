@@ -1,11 +1,15 @@
 package cs2340.LetMeCheckMyApp;
 
+import java.util.Date;
+
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class AddTask extends Activity {
     /** Called when the activity is first created. */
@@ -16,11 +20,13 @@ public class AddTask extends Activity {
         
         final EditText taskNameET = (EditText) findViewById(R.id.TaskNameText);
         final EditText descriptionET = (EditText) findViewById(R.id.TaskDescriptionText);
+        final EditText categoryET = (EditText) findViewById(R.id.TaskCategoryText);
+        final EditText dateET = (EditText) findViewById(R.id.TaskDateText);
         
         Button addTaskButton = (Button)findViewById(R.id.CompleteAddTaskButton);
         addTaskButton.setOnClickListener(new View.OnClickListener() {
         	/** 
-        	 * When the sign in button is clicked, this code is executed 
+        	 * When the Add Task button is clicked, this code is executed 
         	 */
 			public void onClick(View view) {
 				/*
@@ -28,10 +34,22 @@ public class AddTask extends Activity {
 				 */
 				String taskName = taskNameET.getText().toString();
 				String description = descriptionET.getText().toString();
-				if (taskName != "") {
-	            	setResult(RESULT_OK, new Intent().putExtra("AddTask", new Task(taskName,description)));
-	            	finish();
+				String category = categoryET.getText().toString();
+				String dateString = dateET.getText().toString();
+				
+				try
+				{
+					Date date = new Date(dateString);
+					if (taskName != "") {
+		            	setResult(RESULT_OK, new Intent().putExtra("AddTask", new Task(taskName,description, category, date)));
+		            	finish();
+					}
 				}
+				catch(Exception ex)
+				{
+					displayMessage("Improper date format");
+				}
+				
 			}
 		});
         
@@ -43,5 +61,17 @@ public class AddTask extends Activity {
 				finish();
 			}
 		});
+        
+        
     }
+    /**
+	 * Displays an error message to the user
+	 * @param msg	Message to be displayed
+	 */
+	private void displayMessage(String msg){
+		Context context = getApplicationContext();
+        int duration = Toast.LENGTH_SHORT;
+        Toast toast = Toast.makeText(context, msg, duration);
+        toast.show();
+	}
 }

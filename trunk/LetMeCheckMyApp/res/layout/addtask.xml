@@ -33,6 +33,26 @@
         android:singleLine="false" >
     </EditText>
 
+    <EditText
+        android:id="@+id/TaskCategoryText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:hint="@string/AddTaskCategoryHelper"
+        android:singleLine="false" >
+    </EditText>
+    
+    <EditText
+        android:id="@+id/TaskDateText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:hint="@string/AddTaskDateHelper"
+        android:singleLine="false" >
+    </EditText>
+        
     <Button
         android:id="@+id/CompleteAddTaskButton"
         android:layout_width="match_parent"

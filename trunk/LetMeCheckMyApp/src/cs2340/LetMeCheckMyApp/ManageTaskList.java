@@ -24,7 +24,7 @@ public class ManageTaskList extends Activity {
 		//TODO attempt to load the user's list from storage
 		list = new ArrayList<Task>();
 		final ArrayAdapter<Task> adapter;
-		adapter = new ArrayAdapter<Task>(this, android.R.layout.simple_list_item_1, list);
+		adapter = new TaskAdapter(this, R.layout.list_item, list);
 		listview.setAdapter(adapter);
 
 		Button addTaskButton = (Button)findViewById(R.id.AddTaskButton);
