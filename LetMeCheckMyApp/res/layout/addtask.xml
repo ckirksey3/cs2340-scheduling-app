@@ -40,7 +40,7 @@
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
         android:hint="@string/AddTaskCategoryHelper"
-        android:singleLine="false" >
+        android:singleLine="true" >
     </EditText>
     
     <EditText
@@ -50,7 +50,7 @@
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
         android:hint="@string/AddTaskDateHelper"
-        android:singleLine="false" >
+        android:singleLine="true" >
     </EditText>
         
     <Button
