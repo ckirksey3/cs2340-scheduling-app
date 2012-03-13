@@ -1,7 +1,7 @@
 package cs2340.LetMeCheckMyApp;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.util.Calendar;
 
 /**
  * 
@@ -17,7 +17,7 @@ public class Task implements Serializable {
 	private String name;
 	private String description;
 	private String category;
-	private Date completeDate;
+	private Calendar completeDate;
 	
 	public Task() {
 		this("defaultName","");
@@ -48,7 +48,7 @@ public class Task implements Serializable {
 	 * @param category	the area of life that the task is associated with (school, work, etc)
 	 * @param completeDate	the date that the users plans to have the task completed
 	 */
-	public Task(String name, String description, String category, Date completeDate) {
+	public Task(String name, String description, String category, Calendar completeDate) {
 		this.name = name;
 		this.description = description;
 		this.category = category;
@@ -73,10 +73,10 @@ public class Task implements Serializable {
 	public String getCategory(){
 		return category;
 	}
-	public void setCompleteDate(Date completeDate){
+	public void setCompleteDate(Calendar completeDate){
 		this.completeDate = completeDate;
 	}
-	public Date getCompleteDate(){
+	public Calendar getCompleteDate(){
 		return completeDate;
 	}
 	

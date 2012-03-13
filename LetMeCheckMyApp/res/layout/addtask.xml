@@ -42,22 +42,19 @@
         android:hint="@string/AddTaskCategoryHelper"
         android:singleLine="true" >
     </EditText>
-    
-    <EditText
-        android:id="@+id/TaskDateText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
-        android:hint="@string/AddTaskDateHelper"
-        android:singleLine="true" >
-    </EditText>
+
+    <DatePicker
+        android:id="@+id/datePicker1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
         
     <Button
         android:id="@+id/CompleteAddTaskButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/AddTask" />"
+        android:text="@string/AddTask" />
+
+"
 
     <Button
         android:id="@+id/CancelAddTaskButton"
