@@ -10,6 +10,14 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+/**
+ * 
+ * Activity class for the ManageTaskList screen
+ * 
+ * 
+ * @author Caleb
+ *
+ */
 public class ManageTaskList extends Activity {
 	
 	ArrayList<Task> list;

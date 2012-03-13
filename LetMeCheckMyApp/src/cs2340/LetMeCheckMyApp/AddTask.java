@@ -11,6 +11,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+/**
+ * 
+ * Activity class for the AddTask screen
+ * 
+ * 
+ * @author Caleb
+ *
+ */
 public class AddTask extends Activity {
     /** Called when the activity is first created. */
     @Override
