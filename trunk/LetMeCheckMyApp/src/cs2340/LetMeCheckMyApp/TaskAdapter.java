@@ -8,20 +8,39 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
- 
+
+/**
+ * 
+ * Adapter for displaying a Task object in the Task Listview
+ * 
+ * 
+ * @author Caleb
+ *
+ */
 public class TaskAdapter extends ArrayAdapter<Task> {
  
     int resource;
     String response;
     Context context;
     //Initialize adapter
+    /**
+     * @param items  a list of tasks that will be placed in the View
+     * @param context	the context in which the adapter is being referenced
+     * @param resource	a reference to the xml file that outlines the format for each item in the List View
+     */
     public TaskAdapter(Context context, int resource, List<Task> items) {
         super(context, resource, items);
         this.resource=resource;
  
     }
  
-    @Override
+    /**
+     * 
+     * Method called by View's getView method to generate the List View for this specific class
+     * 
+     * @return 	a view that includes this TaskAdapter's list of Task items
+     *
+     */
     public View getView(int position, View convertView, ViewGroup parent)
     {
         LinearLayout taskView;

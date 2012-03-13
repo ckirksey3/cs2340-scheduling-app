@@ -18,7 +18,12 @@ public class AppUser {
 		this.email = email;
 		this.password = password;
 	}
-	/* Returns true if the typed name and password matches this user object */
+    /**
+     * Verify that the user info matches an existing user.
+     * @param username	Username entered by user
+     * @param password	Password entered by user
+     * @return	true if the typed name and password matches this user object
+     */
 	public boolean isMatch(String inputName, String inputPassword)
 	{
 		if(inputName == name && inputPassword==password)

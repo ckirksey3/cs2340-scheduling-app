@@ -3,6 +3,14 @@ package cs2340.LetMeCheckMyApp;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * 
+ * Information holder for a task
+ * 
+ * 
+ * @author Caleb
+ *
+ */
 public class Task implements Serializable {
 
 	private static final long serialVersionUID = -8558142619554107137L;
@@ -15,15 +23,31 @@ public class Task implements Serializable {
 		this("defaultName","");
 	}
 	
+	/**
+	 * 
+	 * @param name	basic title of the task
+	 */
 	public Task(String name) {
 		this(name,"");
 	}
 	
+	/**
+	 * 
+	 * @param name			basic title of the task
+	 * @param description	more detailed description of the task
+	 */
 	public Task(String name, String description) {
 		this.name = name;
 		this.description = description;
 	}
 	
+	/**
+	 * 
+	 * @param name	basic title of the task
+	 * @param description	more detailed description of the task 
+	 * @param category	the area of life that the task is associated with (school, work, etc)
+	 * @param completeDate	the date that the users plans to have the task completed
+	 */
 	public Task(String name, String description, String category, Date completeDate) {
 		this.name = name;
 		this.description = description;
