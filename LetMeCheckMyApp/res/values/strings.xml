@@ -11,6 +11,7 @@
     <string name="AddTaskDateHelper">Date (MM/DD/YYYY)</string>
     <string name="Filter">Filter By Category</string>
     <string-array name="filter_array">
+        <item>Select A Category</item>
         <item>Business</item>
         <item>Recreation</item>
         <item>Other</item>
