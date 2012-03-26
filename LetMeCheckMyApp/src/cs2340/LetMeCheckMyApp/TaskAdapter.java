@@ -63,10 +63,12 @@ public class TaskAdapter extends ArrayAdapter<Task> {
         //Get the text boxes from the listitem.xml file
         TextView taskName =(TextView)taskView.findViewById(R.id.txtTaskName);
         TextView taskDescription =(TextView)taskView.findViewById(R.id.txtTaskDescription);
+        TextView taskCategory =(TextView)taskView.findViewById(R.id.txtTaskCategory);
  
         //Assign the appropriate data from our alert object above
         taskName.setText(task.getName());
         taskDescription.setText(task.getDescription());
+        taskCategory.setText(task.getCategory());
  
         return taskView;
     }

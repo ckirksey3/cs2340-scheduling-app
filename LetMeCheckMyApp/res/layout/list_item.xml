@@ -23,6 +23,14 @@
             android:ellipsize="none"
             android:gravity="right"
             />
+        <TextView android:id="@+id/txtTaskCategory"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:singleLine="true"
+            android:ellipsize="none"
+            android:gravity="right"
+            />
     </TableRow>
 </TableLayout>
 </LinearLayout>
