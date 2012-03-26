@@ -5,11 +5,17 @@
     android:orientation="vertical"
     android:background="@drawable/background"
     android:tileMode="repeat">
-    
+
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Manage Tasks" />
+
+    <Spinner
+        android:id="@+id/spinner1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:prompt="@string/Filter" />
 
     <ListView 
         android:id="@+id/TaskList"

@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Spinner;
 
 /**
  * 
@@ -35,6 +36,15 @@ public class ManageTaskList extends Activity {
 		adapter = new TaskAdapter(this, R.layout.list_item, list);
 		listview.setAdapter(adapter);
 
+		//Spinner Stuff
+		 Spinner spinner = (Spinner) findViewById(R.id.spinner1);
+		    ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(
+		            this, R.array.filter_array, android.R.layout.simple_spinner_item);
+		    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		    spinner.setAdapter(spinnerAdapter);
+		// end Spinner Stuff 
+		    
+		    
 		Button addTaskButton = (Button)findViewById(R.id.AddTaskButton);
 		addTaskButton.setOnClickListener(new View.OnClickListener()
 		{

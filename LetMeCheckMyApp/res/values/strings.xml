@@ -9,5 +9,10 @@
     <string name="AddTask">Add Task</string>
     <string name="AddTaskCategoryHelper">Category (ex: Work, School, etc)</string>
     <string name="AddTaskDateHelper">Date (MM/DD/YYYY)</string>
-
+    <string name="Filter">Filter By Category</string>
+    <string-array name="filter_array">
+        <item>Business</item>
+        <item>Recreation</item>
+        <item>Other</item>
+    </string-array>
 </resources>
