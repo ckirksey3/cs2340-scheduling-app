@@ -7,9 +7,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 /**
@@ -32,6 +34,13 @@ public class AddTask extends Activity {
 		final EditText categoryET = (EditText) findViewById(R.id.TaskCategoryText);
 		final DatePicker dateWidget = (DatePicker) findViewById(R.id.datePicker1);
 
+		//Populate Category Spinner
+		 final Spinner categorySpinner = (Spinner) findViewById(R.id.spinner1);
+		    ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(
+		            this, R.array.filter_array, android.R.layout.simple_spinner_item);
+		    spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		    categorySpinner.setAdapter(spinnerAdapter);
+		
 		Button addTaskButton = (Button)findViewById(R.id.CompleteAddTaskButton);
 		addTaskButton.setOnClickListener(new View.OnClickListener() {
 			/** 
@@ -43,7 +52,7 @@ public class AddTask extends Activity {
 				 */
 				String taskName = taskNameET.getText().toString();
 				String description = descriptionET.getText().toString();
-				String category = categoryET.getText().toString();
+				String category = categorySpinner.getSelectedItem().toString();
 				
 				Calendar date = Calendar.getInstance();
 				date.set(Calendar.YEAR, dateWidget.getYear());

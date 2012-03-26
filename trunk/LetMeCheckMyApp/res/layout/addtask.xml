@@ -42,6 +42,12 @@
         android:hint="@string/AddTaskCategoryHelper"
         android:singleLine="true" >
     </EditText>
+    
+    <Spinner
+        android:id="@+id/TaskCategorySpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:prompt="@string/Filter" />
 
     <DatePicker
         android:id="@+id/datePicker1"
