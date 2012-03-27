@@ -32,16 +32,6 @@
         android:hint="@string/AddTaskDescriptionHelper"
         android:singleLine="false" >
     </EditText>
-
-    <EditText
-        android:id="@+id/TaskCategoryText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
-        android:hint="@string/AddTaskCategoryHelper"
-        android:singleLine="true" >
-    </EditText>
     
     <Spinner
         android:id="@+id/TaskCategorySpinner"
@@ -60,7 +50,7 @@
         android:layout_height="wrap_content"
         android:text="@string/AddTask" />
 
-"
+
 
     <Button
         android:id="@+id/CancelAddTaskButton"

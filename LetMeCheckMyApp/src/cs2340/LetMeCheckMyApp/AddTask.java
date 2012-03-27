@@ -31,11 +31,11 @@ public class AddTask extends Activity {
 
 		final EditText taskNameET = (EditText) findViewById(R.id.TaskNameText);
 		final EditText descriptionET = (EditText) findViewById(R.id.TaskDescriptionText);
-		final EditText categoryET = (EditText) findViewById(R.id.TaskCategoryText);
+		//final EditText categoryET = (EditText) findViewById(R.id.TaskCategoryText);
 		final DatePicker dateWidget = (DatePicker) findViewById(R.id.datePicker1);
 
 		//Populate Category Spinner
-		 final Spinner categorySpinner = (Spinner) findViewById(R.id.spinner1);
+		 final Spinner categorySpinner = (Spinner) findViewById(R.id.TaskCategorySpinner);
 		    ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(
 		            this, R.array.filter_array, android.R.layout.simple_spinner_item);
 		    spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -60,6 +60,7 @@ public class AddTask extends Activity {
 				date.set(Calendar.DAY_OF_MONTH, dateWidget.getDayOfMonth());
 				
 				setResult(RESULT_OK, new Intent().putExtra("AddTask", new Task(taskName,description, category, date)));
+				displayMessage("Task added successfully");
 				finish();
 
 			}
