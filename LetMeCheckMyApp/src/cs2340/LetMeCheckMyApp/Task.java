@@ -16,7 +16,7 @@ public class Task implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -5016996327245317143L;
+	//private static final long serialVersionUID = -5016996327245317143L;
 	/**
 	 * 
 	 */
