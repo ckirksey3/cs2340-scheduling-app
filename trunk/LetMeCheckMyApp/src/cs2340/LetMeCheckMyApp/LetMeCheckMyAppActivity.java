@@ -26,61 +26,61 @@ import android.widget.Toast;
  *
  */
 public class LetMeCheckMyAppActivity extends Activity {
-    private final String USER_FILE = "users.dat";
-	
+	private final String USER_FILE = "users.dat";
+
 	/** 
 	 * Called when the activity is first created. 
 	 * */
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
-        final EditText userNameET = (EditText) findViewById(R.id.userNameText);
-        final EditText passwordET = (EditText) findViewById(R.id.passwordText);
-        
-        Button registerNewUserButton = (Button)findViewById(R.id.registerNewButton);
-        registerNewUserButton.setOnClickListener(new View.OnClickListener()
-        {
-        	/** 
-        	 * When the register new user button is clicked, this code is executed 
-        	 * */
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.main);
+		final EditText userNameET = (EditText) findViewById(R.id.userNameText);
+		final EditText passwordET = (EditText) findViewById(R.id.passwordText);
+
+		Button registerNewUserButton = (Button)findViewById(R.id.registerNewButton);
+		registerNewUserButton.setOnClickListener(new View.OnClickListener()
+		{
+			/** 
+			 * When the register new user button is clicked, this code is executed 
+			 * */
 			public void onClick(View view) {
 				Intent myIntent = new Intent(view.getContext(), RegisterUser.class);
 				startActivityForResult(myIntent, 0);
 			}
 		});
-        Button signInButton = (Button)findViewById(R.id.signInButton);
-        signInButton.setOnClickListener(new View.OnClickListener() {
-        	/** 
-        	 * When the sign in button is clicked, this code is executed 
-        	 * */
+		Button signInButton = (Button)findViewById(R.id.signInButton);
+		signInButton.setOnClickListener(new View.OnClickListener() {
+			/** 
+			 * When the sign in button is clicked, this code is executed 
+			 * */
 			public void onClick(View view) {
 				String username = userNameET.getText().toString();
-                String password = passwordET.getText().toString();
+				String password = passwordET.getText().toString();
 				if(username.equals("") || password.equals("")){
 					displayMessage("Enter both a username and password");
 				}else if(verifyUser(username,password)){
 					Log.d("SignIn", "Signing in as \""+username+"\"");
 					displayMessage("SignIn Succesful!");
-					
+
 					Intent myIntent = new Intent(view.getContext(), ManageTaskList.class);
-                	startActivityForResult(myIntent, 0);
+					startActivityForResult(myIntent, 0);
 				}else{
 					displayMessage("Username or password is incorrect");
-                }
+				}
 			}
 		});
-    }
-    
-    /**
-     * Verify that the user info matches an existing user.
-     * @param username	Username entered by user
-     * @param password	Password entered by user
-     * @return	true if info matches, false otherwise
-     */
-    private boolean verifyUser(String username, String password){
-    	Log.d("SignIn", "Verfying user credentials for \""+username+"\"");
-    	boolean found = false;
+	}
+
+	/**
+	 * Verify that the user info matches an existing user.
+	 * @param username	Username entered by user
+	 * @param password	Password entered by user
+	 * @return	true if info matches, false otherwise
+	 */
+	private boolean verifyUser(String username, String password){
+		Log.d("SignIn", "Verfying user credentials for \""+username+"\"");
+		boolean found = false;
 		BufferedReader br = null;
 		try{
 			br = new BufferedReader(new InputStreamReader(new FileInputStream(new File(getFilesDir()+"/"+USER_FILE))));
@@ -103,16 +103,16 @@ public class LetMeCheckMyAppActivity extends Activity {
 			}
 		}
 		return found;
-    }
-    
-    /**
+	}
+
+	/**
 	 * Displays an error message to the user
 	 * @param msg	Message to be displayed
 	 */
 	private void displayMessage(String msg){
 		Context context = getApplicationContext();
-        int duration = Toast.LENGTH_SHORT;
-        Toast toast = Toast.makeText(context, msg, duration);
-        toast.show();
+		int duration = Toast.LENGTH_SHORT;
+		Toast toast = Toast.makeText(context, msg, duration);
+		toast.show();
 	}
 }
