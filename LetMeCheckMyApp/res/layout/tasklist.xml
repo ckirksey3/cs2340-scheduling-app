@@ -16,7 +16,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:prompt="@string/Filter" />
+    
+    <DatePicker
+        android:id="@+id/datePickerFilter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
+    <Button
+        android:id="@+id/dateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="FIlter By Date" />
+    
     <ListView 
         android:id="@+id/TaskList"
         android:layout_width="match_parent"

@@ -1,6 +1,7 @@
 package cs2340.LetMeCheckMyApp;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.ListView;
 import android.widget.Spinner;
 
@@ -39,17 +41,48 @@ public class ManageTaskList extends Activity {
 		listAdapter = new TaskAdapter(this, R.layout.list_item, list);
 		listview.setAdapter(listAdapter);
 
+		final DatePicker datePicker = (DatePicker) findViewById(R.id.datePickerFilter);
+		
 		//Spinner Stuff
 		Spinner spinner = (Spinner) findViewById(R.id.spinner1);
-
 		spinner.setOnItemSelectedListener(new SpinnerListener(this));
-
 		ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(this, R.array.filter_array, android.R.layout.simple_spinner_item);
 		listAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner.setAdapter(spinnerAdapter);
 		// end Spinner Stuff 
 
-
+		//date filter stuff
+		
+		Button dateButton = (Button)findViewById(R.id.dateButton);
+		dateButton.setOnClickListener(new View.OnClickListener()
+		{
+			/** 
+			 * When the add filter by date button is clicked, this code is executed 
+			 * */
+			public void onClick(View view) {
+				Calendar date = Calendar.getInstance();
+				date.set(Calendar.YEAR, datePicker.getYear());
+				date.set(Calendar.MONTH, datePicker.getMonth());
+				date.set(Calendar.DAY_OF_MONTH, datePicker.getDayOfMonth());
+				
+				for (int i = filteredList.size()-1; i>=0; i--){
+					list.add(filteredList.remove(i));
+					listAdapter.notifyDataSetChanged();
+				}
+				
+				int i = list.size()-1;				
+				while (i >= 0){
+					if (list.get(i).getCompleteDate().compareTo(date) < 0){ // if not the correct category move the item to the other list for storage
+						filteredList.add(list.remove(i));
+						listAdapter.notifyDataSetChanged();
+					}
+					i--;
+				}
+				
+			}
+		});
+		
+		
 		Button addTaskButton = (Button)findViewById(R.id.AddTaskButton);
 		addTaskButton.setOnClickListener(new View.OnClickListener()
 		{
