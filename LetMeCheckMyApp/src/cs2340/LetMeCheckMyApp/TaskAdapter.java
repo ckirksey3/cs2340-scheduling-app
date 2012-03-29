@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -64,11 +66,13 @@ public class TaskAdapter extends ArrayAdapter<Task> {
 		TextView taskName =(TextView)taskView.findViewById(R.id.txtTaskName);
 		TextView taskDescription =(TextView)taskView.findViewById(R.id.txtTaskDescription);
 		TextView taskCategory =(TextView)taskView.findViewById(R.id.txtTaskCategory);
-
+		CheckBox taskBox = (CheckBox)taskView.findViewById(R.id.checkbox);
+		
 		//Assign the appropriate data from our alert object above
 		taskName.setText(task.getName());
 		taskDescription.setText(task.getDescription());
 		taskCategory.setText(task.getCategory());
+		taskBox.setOnCheckedChangeListener(new CheckBoxChangedListener(task, taskBox));
 
 		return taskView;
 	}

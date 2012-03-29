@@ -3,6 +3,8 @@ package cs2340.LetMeCheckMyApp;
 import java.io.Serializable;
 import java.util.Calendar;
 
+import android.widget.CheckBox;
+
 /**
  * 
  * Information holder for a task
@@ -22,10 +24,12 @@ public class Task implements Serializable {
 	 */
 	
 	//private static final long serialVersionUID = -5016996327245317143L;
+	private boolean isComplete = false;
 	private String name;
 	private String description;
 	private String category;
 	private Calendar completeDate;
+	private CheckBox checkBox;
 	
 	public Task() {
 		this("defaultName","");
@@ -47,6 +51,7 @@ public class Task implements Serializable {
 	public Task(String name, String description) {
 		this.name = name;
 		this.description = description;
+		
 	}
 	
 	/**
@@ -84,10 +89,17 @@ public class Task implements Serializable {
 	public void setCompleteDate(Calendar completeDate){
 		this.completeDate = completeDate;
 	}
+	
 	public Calendar getCompleteDate(){
 		return completeDate;
 	}
-	
+	public boolean isComplete() {
+		return isComplete;
+	}
+	public void setComplete(boolean isComplete) {
+		this.isComplete = isComplete;
+	}
+
 	
 	@Override
 	public String toString() {
