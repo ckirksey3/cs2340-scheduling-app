@@ -31,7 +31,6 @@ public class AddTask extends Activity {
 
 		final EditText taskNameET = (EditText) findViewById(R.id.TaskNameText);
 		final EditText descriptionET = (EditText) findViewById(R.id.TaskDescriptionText);
-		//final EditText categoryET = (EditText) findViewById(R.id.TaskCategoryText);
 		final DatePicker dateWidget = (DatePicker) findViewById(R.id.datePicker1);
 
 		//Populate Category Spinner
