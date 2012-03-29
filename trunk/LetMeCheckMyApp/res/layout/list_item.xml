@@ -11,8 +11,9 @@
         <CheckBox android:id="@+id/checkbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="check it out"
-        android:onClick="onCheckboxClicked"/>
+        android:text="completed?"/>
+        <!-- android:onClick="onCheckboxClicked" -->
+        
         <TextView android:id="@+id/txtTaskName"
             android:textSize="14.5sp"
             android:layout_width="wrap_content"
