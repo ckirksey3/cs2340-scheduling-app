@@ -72,6 +72,7 @@ public class TaskAdapter extends ArrayAdapter<Task> {
 		taskName.setText(task.getName());
 		taskDescription.setText(task.getDescription());
 		taskCategory.setText(task.getCategory());
+		taskBox.setChecked(task.isComplete());
 		taskBox.setOnCheckedChangeListener(new CheckBoxChangedListener(task, taskBox));
 
 		return taskView;

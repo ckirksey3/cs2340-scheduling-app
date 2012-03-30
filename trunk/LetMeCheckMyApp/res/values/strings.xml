@@ -12,12 +12,20 @@
     <string name="Filter">Filter By Category</string>
     <string-array name="filter_array">
         <item>Select A Filter</item>
-        <item>Business</item>
-        <item>Recreation</item>
+        <item>Work</item>
+        <item>Personal</item>
         <item>School</item>
         <item>Home</item>
         <item>Other</item>
         <item>Complete</item>
         <item>Incomplete</item>
         </string-array>
+    <string-array name="category_array">
+        <item>Select A Category</item>
+        <item>Work</item>
+        <item>Personal</item>
+        <item>School</item>
+        <item>Home</item>
+        <item>Other</item>
+    </string-array>
 </resources>
