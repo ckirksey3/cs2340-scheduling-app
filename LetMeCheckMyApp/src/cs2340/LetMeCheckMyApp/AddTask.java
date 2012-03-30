@@ -36,7 +36,7 @@ public class AddTask extends Activity {
 		//Populate Category Spinner
 		 final Spinner categorySpinner = (Spinner) findViewById(R.id.TaskCategorySpinner);
 		    ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(
-		            this, R.array.filter_array, android.R.layout.simple_spinner_item);
+		            this, R.array.category_array, android.R.layout.simple_spinner_item);
 		    spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		    categorySpinner.setAdapter(spinnerAdapter);
 		

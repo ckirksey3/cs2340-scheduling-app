@@ -10,26 +10,27 @@
     <TableRow>
         <CheckBox android:id="@+id/checkbox"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="completed?"/>
+        android:layout_height="wrap_content"/>
         <!-- android:onClick="onCheckboxClicked" -->
         
         <TextView android:id="@+id/txtTaskName"
-            android:textSize="14.5sp"
+            android:textSize="16sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:singleLine="true"
             />
-        <TextView android:id="@+id/txtTaskDescription"
+         <TextView android:id="@+id/txtTaskDescription"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:singleLine="true"
             android:ellipsize="none"
             android:gravity="right"
-            />
+            android:visibility="gone"
+            /> 
         <TextView android:id="@+id/txtTaskCategory"
+            android:textSize="14sp"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"

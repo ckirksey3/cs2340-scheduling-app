@@ -103,9 +103,6 @@ public class ManageTaskList extends Activity {
 			System.out.println("adding Task");
 			list.add((Task)data.getSerializableExtra("AddTask"));
 			listAdapter.notifyDataSetChanged();
-			//ViewGroup vg = (ViewGroup) findViewById(R.id.TaskList);
-			//vg.invalidate();
-
 		}
 	}
 
