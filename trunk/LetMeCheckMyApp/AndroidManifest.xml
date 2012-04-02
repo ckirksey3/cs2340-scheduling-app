@@ -27,8 +27,17 @@
         <activity android:name=".GMapsActivity"></activity>
         
         <uses-library android:name="com.google.android.maps" />
+        
+        
+	    
+	    <uses-library android:name="android.test.runner" />
     </application>
+    
+    
     
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <instrumentation android:name="android.test.InstrumentationTestRunner"
+	    android:targetPackage="cs2340.LetMeCheckMyApp"
+	    android:label=".Testing" />
 </manifest>
