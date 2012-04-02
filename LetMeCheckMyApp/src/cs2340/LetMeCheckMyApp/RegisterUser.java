@@ -47,19 +47,17 @@ public class RegisterUser extends Activity {
 				if(username.equals("") || password.equals("") || email.equals("")){ //check that fields are filled in
 					displayMessage("All fields must be filled to continue");
 				}else if(!userExists(username, email)){ //check if user already exists
-					Log.d("RegisterUser", "Storing "+username+" in "+USER_FILE);
-					//store user in database
-					try{
-						FileOutputStream fos = openFileOutput(USER_FILE, Context.MODE_APPEND);
-						fos.write((username+"\t"+password+"\t"+email+"\n").getBytes());
-						fos.close();
-					}catch(IOException e){
-						Log.e("RegisterUser", e.getMessage());
+					if(createUser(username, email, password))
+					{
+						//start task lists
+						displayMessage("Registration Succesful!");
+						Intent myIntent = new Intent(view.getContext(), ManageTaskList.class);
+						startActivity(myIntent);
 					}
-					//start task lists
-					displayMessage("Registration Succesful!");
-					Intent myIntent = new Intent(view.getContext(), ManageTaskList.class);
-					startActivity(myIntent);
+					else
+					{
+						displayMessage("Error in registration");
+					}
 				}else{
 					displayMessage("Username or email is already registered.");
 				}
@@ -72,6 +70,25 @@ public class RegisterUser extends Activity {
 				finish();
 			}
 		});
+	}
+	/**
+	 * Adds a user
+	 * @return true if the user was added successfully, false if a problem occurred
+	 */
+	private boolean createUser(String username, String email, String password)
+	{
+		Log.d("RegisterUser", "Storing "+username+" in "+USER_FILE);
+		//store user in database
+		try{
+			FileOutputStream fos = openFileOutput(USER_FILE, Context.MODE_APPEND);
+			fos.write((username+"\t"+password+"\t"+email+"\n").getBytes());
+			fos.close();
+			return true;
+		}catch(IOException e){
+			Log.e("RegisterUser", e.getMessage());
+			return false;
+		}
+		
 	}
 
 	/**
