@@ -34,4 +34,5 @@ public class Testing extends ActivityInstrumentationTestCase2<LetMeCheckMyAppAct
 		testT.setName("myTest");
 		assertEquals("myTest", testT.getName());
 	}
+	
 }

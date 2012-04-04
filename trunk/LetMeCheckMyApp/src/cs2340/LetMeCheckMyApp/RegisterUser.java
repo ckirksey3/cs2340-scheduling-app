@@ -28,6 +28,7 @@ import android.widget.Toast;
  */
 public class RegisterUser extends Activity {
 	private final String USER_FILE = "users.dat";
+	String username, password, email;
 
 	/** Called when the activity is first created. */
 	public void onCreate(Bundle savedInstanceState) {
@@ -75,10 +76,13 @@ public class RegisterUser extends Activity {
 	 * Adds a user
 	 * @return true if the user was added successfully, false if a problem occurred
 	 */
-	private boolean createUser(String username, String email, String password)
+	boolean createUser(String uname, String em, String pw)
 	{
 		Log.d("RegisterUser", "Storing "+username+" in "+USER_FILE);
 		//store user in database
+		username = uname;
+		email = em;
+		password = pw;
 		try{
 			FileOutputStream fos = openFileOutput(USER_FILE, Context.MODE_APPEND);
 			fos.write((username+"\t"+password+"\t"+email+"\n").getBytes());
@@ -97,7 +101,7 @@ public class RegisterUser extends Activity {
 	 * @param email
 	 * @return	true if the user exists, false otherwise
 	 */
-	private boolean userExists(String username, String email){
+	boolean userExists(String username, String email){
 		Log.d("RegisterUser", "Checking if username:\""+username+"\" or email:\""+email+"\" already exists.");
 		boolean found = false;
 		BufferedReader br = null;
