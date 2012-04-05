@@ -61,8 +61,7 @@ public class Task implements Serializable {
 		this.name = name;
 		this.description = description;
 		this.category = category;
-		this.completeDate = completeDate;
-		//this.date = date;
+		this.completeDate = completeDate		//this.date = date;
 	}
 	
 	public String getName() {
