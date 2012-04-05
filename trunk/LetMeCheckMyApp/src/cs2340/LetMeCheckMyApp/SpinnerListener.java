@@ -23,13 +23,30 @@ public class SpinnerListener implements OnItemSelectedListener {
 	 * @id the id of the selected item
 	 */
 	public void onItemSelected(AdapterView<?> parent,View view, int pos, long id) {
-		//repopulate the list
+		repopulate();
+		String category = (String) parent.getSelectedItem(); 
+		filter(parent, category);
+
+	}
+
+	
+	/**
+	 * Executes if none of the options are selected by the user
+	 */
+	public void onNothingSelected(AdapterView<?> parent) {
+		for (int i = 0; i< t.getList().size(); i++){
+			t.getList().get(i).setVisible(true);
+		}
+	}
+	
+	public void repopulate(){
 		for (int i = 0; i< t.getList().size(); i++){
 			t.getList().get(i).setVisible(true);
 			t.getListAdapter().notifyDataSetChanged();
 		}
-		
-		String s = (String) parent.getSelectedItem(); 
+	}
+	
+	public void filter(AdapterView<?> parent, String s){
 		
 		if (s.equalsIgnoreCase("complete")) {
 			for (int i = 0; i< t.getList().size(); i++){
@@ -62,19 +79,5 @@ public class SpinnerListener implements OnItemSelectedListener {
 			}
 		}
 	}
-
-	
-	/**
-	 * Executes if none of the options are selected by the user
-	 */
-	public void onNothingSelected(AdapterView<?> parent) {
-		for (int i = 0; i< t.getList().size(); i++){
-			t.getList().get(i).setVisible(true);
-		}
-		
-	}
-	
-	
-	
 	
 }
