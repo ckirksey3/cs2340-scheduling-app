@@ -1,15 +1,10 @@
 package cs2340.LetMeCheckMyApp;
 
 import java.util.ArrayList;
-
 import android.test.ActivityInstrumentationTestCase2;
-import android.widget.TextView;
 
 public class FilterTest extends ActivityInstrumentationTestCase2<LetMeCheckMyAppActivity> {
 
-	private LetMeCheckMyAppActivity mActivity;
-	private TextView mView;
-	private String resourceString;
 	private SpinnerListener sl;
 	private ArrayList<Task> list;
 
@@ -21,9 +16,6 @@ public class FilterTest extends ActivityInstrumentationTestCase2<LetMeCheckMyApp
 	@Override
 	protected void setUp() throws Exception {
 		super.setUp();
-		mActivity = this.getActivity();
-		//mView = (TextView) mActivity.findViewById(R.id.);
-		resourceString = mActivity.getString(R.string.hello);
 		ManageTaskList mtl = new ManageTaskList();
 		list = new ArrayList<Task>();
 		Task t0 = new Task();
