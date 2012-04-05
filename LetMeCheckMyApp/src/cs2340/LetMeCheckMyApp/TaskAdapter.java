@@ -56,6 +56,7 @@ public class TaskAdapter extends ArrayAdapter<Task> {
 			LayoutInflater vi;
 			vi = (LayoutInflater)getContext().getSystemService(inflater);
 			vi.inflate(resource, taskView, true);
+		
 		}
 		else
 		{
@@ -75,8 +76,8 @@ public class TaskAdapter extends ArrayAdapter<Task> {
 		taskName.setText(task.getName());
 		taskDescription.setText(task.getDescription());
 		taskCategory.setText(task.getCategory());
-		taskBox.setChecked(task.isComplete());
 		taskBox.setOnCheckedChangeListener(new CheckBoxChangedListener(task, taskBox));
+		taskBox.setChecked(task.isComplete());
 
 		if (task.isVisible()){
 			taskView.setVisibility(View.VISIBLE);
