@@ -1,16 +1,13 @@
 package cs2340.LetMeCheckMyApp;
 
 import java.util.Calendar;
-
 import android.test.ActivityInstrumentationTestCase2;
-import android.widget.TextView;
 
 public class TaskTest extends ActivityInstrumentationTestCase2<LetMeCheckMyAppActivity> {
 
 	 private LetMeCheckMyAppActivity mActivity;
 	 private Task testT;
-	 private String resourceString;
-	public TaskTest() {
+	 public TaskTest() {
 		super(LetMeCheckMyAppActivity.class);
 		// TODO Auto-generated constructor stub
 	}
@@ -20,7 +17,7 @@ public class TaskTest extends ActivityInstrumentationTestCase2<LetMeCheckMyAppAc
         super.setUp();
         mActivity = this.getActivity();
 		testT = new Task();
-        resourceString = mActivity.getString(R.string.hello);
+        mActivity.getString(R.string.hello);
     }
 	
 	public void testPreconditions() {

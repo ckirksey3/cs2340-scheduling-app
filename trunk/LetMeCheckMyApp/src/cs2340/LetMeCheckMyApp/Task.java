@@ -1,11 +1,8 @@
 package cs2340.LetMeCheckMyApp;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-
-import android.view.View;
 import android.widget.CheckBox;
 
 /**
@@ -16,6 +13,8 @@ import android.widget.CheckBox;
  * @author Caleb
  *
  */
+
+@SuppressWarnings("serial")
 public class Task implements Serializable {
 	
 	//private static final long serialVersionUID = -5016996327245317143L;
@@ -129,6 +128,7 @@ public class Task implements Serializable {
 		this.date = date;
 	}
 	
+	@SuppressWarnings("static-access")
 	public String completionDateToString()
 	{
 		return this.completeDate.MONTH + "/" + this.completeDate.DAY_OF_MONTH + "/" + this.completeDate.YEAR;

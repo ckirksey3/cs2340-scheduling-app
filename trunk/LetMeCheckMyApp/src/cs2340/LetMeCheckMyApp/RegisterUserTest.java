@@ -1,7 +1,6 @@
 package cs2340.LetMeCheckMyApp;
 
 import android.test.ActivityInstrumentationTestCase2;
-import android.widget.TextView;
 
 public class RegisterUserTest extends ActivityInstrumentationTestCase2<RegisterUser> {
 
