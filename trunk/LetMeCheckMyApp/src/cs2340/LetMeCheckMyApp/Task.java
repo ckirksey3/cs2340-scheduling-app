@@ -1,8 +1,11 @@
 package cs2340.LetMeCheckMyApp;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
+import android.view.View;
 import android.widget.CheckBox;
 
 /**
@@ -23,6 +26,7 @@ public class Task implements Serializable {
 	private String category;
 	private Calendar completeDate;
 	private CheckBox checkBox;
+	private Date date;
 	
 	public Task() {
 		this("defaultName","");
@@ -54,11 +58,12 @@ public class Task implements Serializable {
 	 * @param category	the area of life that the task is associated with (school, work, etc)
 	 * @param completeDate	the date that the users plans to have the task completed
 	 */
-	public Task(String name, String description, String category, Calendar completeDate) {
+	public Task(String name, String description, String category, Calendar completeDate, Date date) {
 		this.name = name;
 		this.description = description;
 		this.category = category;
 		this.completeDate = completeDate;
+		this.date = date;
 	}
 	
 	public String getName() {
@@ -92,7 +97,6 @@ public class Task implements Serializable {
 	public void setComplete(boolean isComplete) {
 		this.isComplete = isComplete;
 	}
-
 	
 	@Override
 	public String toString() {
@@ -114,4 +118,20 @@ public class Task implements Serializable {
 	public void setCheckBox(CheckBox checkBox) {
 		this.checkBox = checkBox;
 	}
+	
+	public Date getDate()
+	{
+		return date;
+	}
+	
+	public void setDate(Date date)
+	{
+		this.date = date;
+	}
+	
+	public String completionDateToString()
+	{
+		return this.completeDate.MONTH + "/" + this.completeDate.DAY_OF_MONTH + "/" + this.completeDate.YEAR;
+	}
+	
 }
