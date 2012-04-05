@@ -25,14 +25,12 @@ public class CheckBoxChangedListener implements OnCheckedChangeListener{
 	 * @param arg1 not used
 	 */
 	public void onCheckedChanged(CompoundButton arg0, boolean arg1) {
-		//task.setComplete(false);
+
 		if (box.isChecked()){
 			task.setComplete(true);
-		}
-		else
-		{
-			task.setComplete(false);
-		}
+			return;
+		}	
+		task.setComplete(false);
 		
 	}
 
