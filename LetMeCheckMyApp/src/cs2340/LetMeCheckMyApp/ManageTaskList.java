@@ -25,7 +25,6 @@ public class ManageTaskList extends Activity {
 
 
 	private ArrayList<Task> list;
-	private ArrayList<Task> filteredList;
 	private ArrayAdapter<Task> listAdapter;
 
 	/** Called when the activity is first created. */
@@ -37,7 +36,6 @@ public class ManageTaskList extends Activity {
 		ListView listview = (ListView) findViewById(R.id.TaskList);
 		//TODO attempt to load the user's list from storage
 		list = new ArrayList<Task>();
-		filteredList = new ArrayList<Task>();
 		listAdapter = new TaskAdapter(this, R.layout.list_item, list);
 		listview.setAdapter(listAdapter);
 
@@ -64,16 +62,11 @@ public class ManageTaskList extends Activity {
 				date.set(Calendar.YEAR, datePicker.getYear());
 				date.set(Calendar.MONTH, datePicker.getMonth());
 				date.set(Calendar.DAY_OF_MONTH, datePicker.getDayOfMonth());
-				
-				for (int i = filteredList.size()-1; i>=0; i--){
-					list.add(filteredList.remove(i));
-					listAdapter.notifyDataSetChanged();
-				}
-				
+
 				int i = list.size()-1;				
 				while (i >= 0){
 					if (list.get(i).getCompleteDate().compareTo(date) < 0){ // if not the correct category move the item to the other list for storage
-						filteredList.add(list.remove(i));
+						list.get(i).setVisible(false);
 						listAdapter.notifyDataSetChanged();
 					}
 					i--;
@@ -139,14 +132,6 @@ public class ManageTaskList extends Activity {
 
 	public void setListAdapter(ArrayAdapter<Task> listAdapter) {
 		this.listAdapter = listAdapter;
-	}
-
-	public ArrayList<Task> getFilteredList() {
-		return filteredList;
-	}
-
-	public void setFilteredList(ArrayList<Task> filteredList) {
-		this.filteredList = filteredList;
 	}
 
 
