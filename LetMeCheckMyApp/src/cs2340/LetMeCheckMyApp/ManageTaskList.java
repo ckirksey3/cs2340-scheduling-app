@@ -58,6 +58,12 @@ public class ManageTaskList extends Activity {
 			 * When the add filter by date button is clicked, this code is executed 
 			 * */
 			public void onClick(View view) {
+				for (int i = 0; i< list.size(); i++){
+					list.get(i).setVisible(true);
+					listAdapter.notifyDataSetChanged();
+				}
+				
+				
 				Calendar date = Calendar.getInstance();
 				date.set(Calendar.YEAR, datePicker.getYear());
 				date.set(Calendar.MONTH, datePicker.getMonth());
