@@ -20,16 +20,18 @@
             android:ellipsize="end"
             android:singleLine="true"
             />
-         <TextView android:id="@+id/txtTaskDescription"
+        <TextView android:id="@+id/txtTaskCategory"
+            android:textSize="14sp"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:singleLine="true"
             android:ellipsize="none"
-            android:gravity="right"
-            android:visibility="gone"
-            /> 
-        <TextView android:id="@+id/txtTaskCategory"
+            android:gravity="center"
+            android:paddingLeft="15dp"
+            android:paddingRight="25dp"
+            />
+        <TextView android:id="@+id/txtTaskDate"
             android:textSize="14sp"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -38,6 +40,11 @@
             android:ellipsize="none"
             android:gravity="right"
             />
+        <ImageButton
+            android:id="@+id/TrashButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/trash" />
     </TableRow>
 </TableLayout>
 </LinearLayout>
