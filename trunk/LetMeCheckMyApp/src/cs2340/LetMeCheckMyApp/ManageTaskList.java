@@ -94,6 +94,20 @@ public class ManageTaskList extends Activity {
 			}
 		});
 		
+		Button deleteTaskButton = (Button)findViewById(R.id.DeleteTaskButton);
+		deleteTaskButton.setOnClickListener(new View.OnClickListener()
+		{
+			/** 
+			 * When the add new task button is clicked, this code is executed 
+			 * */
+			public void onClick(View view) {
+				//ListView listV = (ListView)findViewById(R.id.TaskList);
+				//Task currentTask = (Task)listV.getSelectedItem();
+				//filteredList.add(currentTask);
+				//currentTask.remove(list);
+			}
+		});
+		
 		Button showMapButton = (Button)findViewById(R.id.ShowMapButton);
 		showMapButton.setOnClickListener(new View.OnClickListener()
 		{
