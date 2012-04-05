@@ -61,7 +61,7 @@ public class Task implements Serializable {
 		this.name = name;
 		this.description = description;
 		this.category = category;
-		this.completeDate = completeDate		//this.date = date;
+		this.completeDate = completeDate;
 	}
 	
 	public String getName() {
@@ -127,10 +127,9 @@ public class Task implements Serializable {
 		this.date = date;
 	}
 	
-	@SuppressWarnings("static-access")
 	public String completionDateToString()
 	{
-		return this.completeDate.MONTH + "/" + this.completeDate.DAY_OF_MONTH + "/" + this.completeDate.YEAR;
+		return (this.completeDate.getTime().getMonth()+1) + "/" + this.completeDate.getTime().getDate() + "/" + this.completeDate.getTime().getYear();
 	}
 	
 }
