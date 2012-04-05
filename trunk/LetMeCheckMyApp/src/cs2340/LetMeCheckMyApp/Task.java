@@ -16,6 +16,7 @@ import android.widget.CheckBox;
 public class Task implements Serializable {
 	
 	//private static final long serialVersionUID = -5016996327245317143L;
+	private boolean visible = true;
 	private boolean isComplete = false;
 	private String name;
 	private String description;
@@ -96,5 +97,21 @@ public class Task implements Serializable {
 	@Override
 	public String toString() {
 		return name;
+	}
+
+	public boolean isVisible() {
+		return visible;
+	}
+
+	public void setVisible(boolean visible) {
+		this.visible = visible;
+	}
+
+	public CheckBox getCheckBox() {
+		return checkBox;
+	}
+
+	public void setCheckBox(CheckBox checkBox) {
+		this.checkBox = checkBox;
 	}
 }
