@@ -10,6 +10,10 @@ public class GMapsActivity extends MapActivity {
 	private MapView mapView;
 	
 	@Override
+	
+	/**
+	 * creates and displays the map
+	 */
 	protected void onCreate(Bundle savedInstanceState) {
 		
 		super.onCreate(savedInstanceState);
