@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
-import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -62,6 +61,10 @@ public class TaskAdapter extends ArrayAdapter<Task> {
 		{
 			taskView = (LinearLayout) convertView;
 		}
+		
+		
+
+		
 		//Get the text boxes from the listitem.xml file
 		TextView taskName =(TextView)taskView.findViewById(R.id.txtTaskName);
 		TextView taskDescription =(TextView)taskView.findViewById(R.id.txtTaskDescription);
@@ -75,7 +78,16 @@ public class TaskAdapter extends ArrayAdapter<Task> {
 		taskBox.setChecked(task.isComplete());
 		taskBox.setOnCheckedChangeListener(new CheckBoxChangedListener(task, taskBox));
 
+		if (task.isVisible()){
+			taskView.setVisibility(View.VISIBLE);
+		}
+		else if (!task.isVisible()){
+			taskView.setVisibility(View.GONE);
+		} 
+		
 		return taskView;
+		
+	
 	}
 
 }
