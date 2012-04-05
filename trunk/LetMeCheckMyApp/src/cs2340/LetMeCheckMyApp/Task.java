@@ -58,12 +58,12 @@ public class Task implements Serializable {
 	 * @param category	the area of life that the task is associated with (school, work, etc)
 	 * @param completeDate	the date that the users plans to have the task completed
 	 */
-	public Task(String name, String description, String category, Calendar completeDate, Date date) {
+	public Task(String name, String description, String category, Calendar completeDate) {
 		this.name = name;
 		this.description = description;
 		this.category = category;
 		this.completeDate = completeDate;
-		this.date = date;
+		//this.date = date;
 	}
 	
 	public String getName() {
