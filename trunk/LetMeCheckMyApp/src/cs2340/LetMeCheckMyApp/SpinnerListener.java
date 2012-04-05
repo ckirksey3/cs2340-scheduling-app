@@ -1,4 +1,6 @@
 package cs2340.LetMeCheckMyApp;
+import java.util.ArrayList;
+
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -9,10 +11,12 @@ import android.widget.AdapterView.OnItemSelectedListener;
  *
  */
 public class SpinnerListener implements OnItemSelectedListener {
-	private ManageTaskList t;
+	private ManageTaskList mtl;
+	private ArrayList<Task> t;
 	
 	public SpinnerListener (ManageTaskList x){
-		t=x;
+		mtl = x;
+		t=x.getList();
 	}
 	
 	/**
@@ -26,7 +30,7 @@ public class SpinnerListener implements OnItemSelectedListener {
 		repopulate();
 		String category = (String) parent.getSelectedItem(); 
 		filter(parent, category);
-
+		mtl.getListAdapter().notifyDataSetChanged();
 	}
 
 	
@@ -34,50 +38,87 @@ public class SpinnerListener implements OnItemSelectedListener {
 	 * Executes if none of the options are selected by the user
 	 */
 	public void onNothingSelected(AdapterView<?> parent) {
-		for (int i = 0; i< t.getList().size(); i++){
-			t.getList().get(i).setVisible(true);
+		for (int i = 0; i< t.size(); i++){
+			t.get(i).setVisible(true);
 		}
 	}
 	
+	/**
+	 * sets all tasks to visible again
+	 */
 	public void repopulate(){
-		for (int i = 0; i< t.getList().size(); i++){
-			t.getList().get(i).setVisible(true);
-			t.getListAdapter().notifyDataSetChanged();
+		for (int i = 0; i< t.size(); i++){
+			t.get(i).setVisible(true);
 		}
 	}
 	
+	/**
+	 * filters the list
+	 * 
+	 * @param parent the Spinner that raised the event
+	 * @param s the category chosen from the spinner
+	 */
 	public void filter(AdapterView<?> parent, String s){
 		
-		if (s.equalsIgnoreCase("complete")) {
-			for (int i = 0; i< t.getList().size(); i++){
-				if (t.getList().get(i).isComplete() == false){ // if not the correct category move the item to the other list for storage
-					t.getList().get(i).setVisible(false);
-					t.getListAdapter().notifyDataSetChanged();
-				}
-			}
+		if (checkComplete(s))
 			return;
-		}
 		
-		if( s.equalsIgnoreCase("incomplete")){
-			for (int i = 0; i< t.getList().size(); i++){
-				if (t.getList().get(i).isComplete() == true){ // if not the correct category move the item to the other list for storage
-					t.getList().get(i).setVisible(false);
-					t.getListAdapter().notifyDataSetChanged();
-				}
-			}
+		else if (checkIncomplete(s))
 			return;
-		}
 		
-		if (s.equals(parent.getItemAtPosition(0)))
+		else if (s.equals(parent.getItemAtPosition(0))) // check if empty
 			return;
 			
+		else 
+			filterByCat(s);
 		
-		for (int i = 0; i< t.getList().size(); i++){
-			if (!t.getList().get(i).getCategory().equalsIgnoreCase(s)){ // if not the correct category move the item to the other list for storage
-				t.getList().get(i).setVisible(false);
-				t.getListAdapter().notifyDataSetChanged();
+	}
+	
+	/**
+	 * filters the list by completed status, keeping only completed tasks
+	 * 
+	 * @param s The category the user selected from the spinner
+	 * @return if s was "complete"
+	 */
+	public boolean checkComplete(String s){
+		if (s.equalsIgnoreCase("complete")) {
+			for (int i = 0; i< t.size(); i++){
+				if (t.get(i).isComplete() == false){ // if not the correct category move the item to the other list for storage
+					t.get(i).setVisible(false);
+				}
+			}
+			return true;
+		}
+		return false;
+	}
+	
+	/**
+	 * filters the list by completed status, keeping only incomplete tasks
+	 * 
+	 * @param s The category the user selected from the spinner
+	 * @return if s was "complete"
+	 */
+	public boolean checkIncomplete(String s){
+		if (s.equalsIgnoreCase("incomplete")) {
+			for (int i = 0; i< t.size(); i++){
+				if (t.get(i).isComplete() == true){ // if not the correct category move the item to the other list for storage
+					t.get(i).setVisible(false);
+				}
+			}
+			return true;
+		}
+		return false;
+	}
+	
+	/**
+	 * filters by category selected by spinner
+	 * @param s the category chosen
+	 */
+	public void filterByCat(String s){
+		for (int i = 0; i< t.size(); i++){
+			if (!t.get(i).getCategory().equalsIgnoreCase(s)){ // if not the correct category move the item to the other list for storage
+				t.get(i).setVisible(false);
 			}
 		}
 	}
-	
 }
