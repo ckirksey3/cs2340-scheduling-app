@@ -25,6 +25,7 @@ public class ManageTaskList extends Activity {
 
 
 	private ArrayList<Task> list;
+	private ArrayList<Task> list2;
 	private ArrayAdapter<Task> listAdapter;
 
 	/** Called when the activity is first created. */
@@ -36,6 +37,7 @@ public class ManageTaskList extends Activity {
 		ListView listview = (ListView) findViewById(R.id.TaskList);
 		//TODO attempt to load the user's list from storage
 		list = new ArrayList<Task>();
+		list2 = new ArrayList<Task>();
 		listAdapter = new TaskAdapter(this, R.layout.list_item, list);
 		listview.setAdapter(listAdapter);
 
@@ -43,7 +45,7 @@ public class ManageTaskList extends Activity {
 		
 		//Spinner Stuff
 		Spinner spinner = (Spinner) findViewById(R.id.spinner1);
-		spinner.setOnItemSelectedListener(new SpinnerListener(this));
+		spinner.setOnItemSelectedListener(new Filter(this));
 		ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(this, R.array.filter_array, android.R.layout.simple_spinner_item);
 		listAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner.setAdapter(spinnerAdapter);
@@ -128,6 +130,7 @@ public class ManageTaskList extends Activity {
 		if (resultCode == RESULT_OK) {
 			System.out.println("adding Task");
 			list.add((Task)data.getSerializableExtra("AddTask"));
+			list2.add((Task)data.getSerializableExtra("AddTask"));
 			listAdapter.notifyDataSetChanged();
 		}
 	}
@@ -153,6 +156,15 @@ public class ManageTaskList extends Activity {
 	public void setListAdapter(ArrayAdapter<Task> listAdapter) {
 		this.listAdapter = listAdapter;
 	}
+	
+	public ArrayList<Task> getList2() {
+		return list2;
+	}
+
+	public void setList2(ArrayList<Task> list) {
+		this.list2 = list;
+	}
+
 
 
 }

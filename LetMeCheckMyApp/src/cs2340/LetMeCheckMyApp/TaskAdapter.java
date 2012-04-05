@@ -68,14 +68,14 @@ public class TaskAdapter extends ArrayAdapter<Task> {
 		
 		//Get the text boxes from the listitem.xml file
 		TextView taskName =(TextView)taskView.findViewById(R.id.txtTaskName);
-		TextView taskDescription =(TextView)taskView.findViewById(R.id.txtTaskDescription);
 		TextView taskCategory =(TextView)taskView.findViewById(R.id.txtTaskCategory);
 		CheckBox taskBox = (CheckBox)taskView.findViewById(R.id.checkbox);
+		TextView taskDate =(TextView)taskView.findViewById(R.id.txtTaskDate);
 		
 		//Assign the appropriate data from our alert object above
 		taskName.setText(task.getName());
-		taskDescription.setText(task.getDescription());
 		taskCategory.setText(task.getCategory());
+		taskDate.setText((task.getCompleteDate().getTime().getMonth() + 1) + "/" + task.getCompleteDate().getTime().getDate());
 		taskBox.setOnCheckedChangeListener(new CheckBoxChangedListener(task, taskBox));
 		taskBox.setChecked(task.isComplete());
 

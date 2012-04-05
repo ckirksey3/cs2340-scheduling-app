@@ -5,7 +5,7 @@ import android.test.ActivityInstrumentationTestCase2;
 
 public class FilterTest extends ActivityInstrumentationTestCase2<LetMeCheckMyAppActivity> {
 
-	private SpinnerListener sl;
+	private Filter sl;
 	private ArrayList<Task> list;
 
 	public FilterTest() {
@@ -27,7 +27,7 @@ public class FilterTest extends ActivityInstrumentationTestCase2<LetMeCheckMyApp
 		list.add(t0);
 		list.add(t1);
 		mtl.setList(list);
-		sl = new SpinnerListener(mtl);
+		sl = new Filter(mtl);
 
 	}
 

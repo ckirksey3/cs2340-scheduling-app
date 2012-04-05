@@ -4,19 +4,22 @@ import java.util.ArrayList;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
 
 /**
  * Used to handle events raised by the filter Spinner
  * @author Caleb
  *
  */
-public class SpinnerListener implements OnItemSelectedListener {
-	private ManageTaskList mtl;
-	private ArrayList<Task> t;
+public class Filter implements OnItemSelectedListener {
+	private ArrayList<Task> list;
+	private ArrayList<Task> list2;
+	private ArrayAdapter<Task> listAdapter;
 	
-	public SpinnerListener (ManageTaskList x){
-		mtl = x;
-		t=x.getList();
+	public Filter (ManageTaskList x){
+		list = x.getList();
+		list2 = x.getList2();
+		listAdapter = x.getListAdapter();
 	}
 	
 	/**
@@ -30,7 +33,7 @@ public class SpinnerListener implements OnItemSelectedListener {
 		repopulate();
 		String category = (String) parent.getSelectedItem(); 
 		filter(parent, category);
-		mtl.getListAdapter().notifyDataSetChanged();
+		updateList();
 	}
 
 	
@@ -38,17 +41,25 @@ public class SpinnerListener implements OnItemSelectedListener {
 	 * Executes if none of the options are selected by the user
 	 */
 	public void onNothingSelected(AdapterView<?> parent) {
+		/*
 		for (int i = 0; i< t.size(); i++){
 			t.get(i).setVisible(true);
 		}
+		*/
 	}
 	
 	/**
 	 * sets all tasks to visible again
 	 */
 	public void repopulate(){
+		/*
 		for (int i = 0; i< t.size(); i++){
 			t.get(i).setVisible(true);
+		}
+		*/
+		listAdapter.clear();
+		for (int i = 0; i< list2.size(); i++){
+			listAdapter.add(list2.get(i));
 		}
 	}
 	
@@ -81,10 +92,21 @@ public class SpinnerListener implements OnItemSelectedListener {
 	 * @return if s was "complete"
 	 */
 	public boolean checkComplete(String s){
+		/*
 		if (s.equalsIgnoreCase("complete")) {
 			for (int i = 0; i< t.size(); i++){
 				if (t.get(i).isComplete() == false){ // if not the correct category move the item to the other list for storage
 					t.get(i).setVisible(false);
+				}
+			}
+			return true;
+		}
+		return false;
+		*/
+		if (s.equalsIgnoreCase("complete")) {
+			for (int i=list.size()-1; i>=0; i--){
+				if (listAdapter.getItem(i).isComplete() == false){ // if not the correct category move the item to the other list for storage
+					listAdapter.remove(listAdapter.getItem(i));
 				}
 			}
 			return true;
@@ -99,10 +121,19 @@ public class SpinnerListener implements OnItemSelectedListener {
 	 * @return if s was "complete"
 	 */
 	public boolean checkIncomplete(String s){
-		if (s.equalsIgnoreCase("incomplete")) {
+		/*if (s.equalsIgnoreCase("incomplete")) {
 			for (int i = 0; i< t.size(); i++){
-				if (t.get(i).isComplete() == true){ // if not the correct category move the item to the other list for storage
+				if (t.get(i).isComplete() == true){ // if not the correct category 
 					t.get(i).setVisible(false);
+				}
+			}
+			return true;
+		}
+		return false;*/
+		if (s.equalsIgnoreCase("incomplete")) {
+			for (int i=list.size()-1; i>=0; i--){
+				if (listAdapter.getItem(i).isComplete() == true){ // if not the correct category
+					listAdapter.remove(listAdapter.getItem(i));
 				}
 			}
 			return true;
@@ -115,10 +146,20 @@ public class SpinnerListener implements OnItemSelectedListener {
 	 * @param s the category chosen
 	 */
 	public void filterByCat(String s){
+		/*
 		for (int i = 0; i< t.size(); i++){
-			if (!t.get(i).getCategory().equalsIgnoreCase(s)){ // if not the correct category move the item to the other list for storage
+			if (!t.get(i).getCategory().equalsIgnoreCase(s)){ // if not the correct category
 				t.get(i).setVisible(false);
 			}
+		}*/
+		for (int i=list.size()-1; i>=0; i--){
+			if (!listAdapter.getItem(i).getCategory().equalsIgnoreCase(s)){ // if not the correct category
+				listAdapter.remove(listAdapter.getItem(i));
+			}
 		}
+	}
+	
+	public void updateList(){
+		listAdapter.notifyDataSetChanged();
 	}
 }
