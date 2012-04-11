@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -23,15 +24,17 @@ public class TaskAdapter extends ArrayAdapter<Task> {
 	int resource;
 	String response;
 	Context context;
+	ManageTaskList mtl;
 	//Initialize adapter
 	/**
 	 * @param items  a list of tasks that will be placed in the View
 	 * @param context	the context in which the adapter is being referenced
 	 * @param resource	a reference to the xml file that outlines the format for each item in the List View
 	 */
-	public TaskAdapter(Context context, int resource, List<Task> items) {
+	public TaskAdapter(Context context, int resource, List<Task> items, ManageTaskList mtl) {
 		super(context, resource, items);
 		this.resource=resource;
+		this.mtl = mtl;
 
 	}
 
@@ -71,6 +74,7 @@ public class TaskAdapter extends ArrayAdapter<Task> {
 		TextView taskCategory =(TextView)taskView.findViewById(R.id.txtTaskCategory);
 		CheckBox taskBox = (CheckBox)taskView.findViewById(R.id.checkbox);
 		TextView taskDate =(TextView)taskView.findViewById(R.id.txtTaskDate);
+		ImageButton trashButton =(ImageButton)taskView.findViewById(R.id.TrashButton);
 		
 		//Assign the appropriate data from our alert object above
 		taskName.setText(task.getName());
@@ -78,6 +82,7 @@ public class TaskAdapter extends ArrayAdapter<Task> {
 		taskDate.setText((task.getCompleteDate().getTime().getMonth() + 1) + "/" + task.getCompleteDate().getTime().getDate());
 		taskBox.setOnCheckedChangeListener(new CheckBoxChangedListener(task, taskBox));
 		taskBox.setChecked(task.isComplete());
+		trashButton.setOnClickListener(new DeleteTaskListener(task, mtl));
 
 		if (task.isVisible()){
 			taskView.setVisibility(View.VISIBLE);
