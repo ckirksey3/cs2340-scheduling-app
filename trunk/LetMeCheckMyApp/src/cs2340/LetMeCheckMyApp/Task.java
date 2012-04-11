@@ -3,6 +3,8 @@ package cs2340.LetMeCheckMyApp;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
+
+import android.content.Context;
 import android.widget.CheckBox;
 
 /**
@@ -25,6 +27,7 @@ public class Task implements Serializable {
 	private Calendar completeDate;
 	private CheckBox checkBox;
 	private Date date;
+	private String user;
 	private String location;
 	
 	public Task() {
@@ -47,7 +50,6 @@ public class Task implements Serializable {
 	public Task(String name, String description) {
 		this.name = name;
 		this.description = description;
-		
 	}
 	
 	/**
@@ -57,11 +59,13 @@ public class Task implements Serializable {
 	 * @param category	the area of life that the task is associated with (school, work, etc)
 	 * @param completeDate	the date that the users plans to have the task completed
 	 */
-	public Task(String name, String description, String category, Calendar completeDate, String location) {
+
+	public Task(String name, String description, String category, Calendar completeDate, String user, String location) {
 		this.name = name;
 		this.description = description;
 		this.category = category;
 		this.completeDate = completeDate;
+		this.user = user;
 		this.setLocation(location);
 	}
 	
@@ -95,6 +99,9 @@ public class Task implements Serializable {
 	}
 	public void setComplete(boolean isComplete) {
 		this.isComplete = isComplete;
+	}
+	public String getUser(){
+		return this.user;
 	}
 	
 	@Override
@@ -133,4 +140,13 @@ public class Task implements Serializable {
 		this.location = location;
 	}
 	
+	public String toFileFormat(){
+		return (name+"\t"+
+				isComplete+"\t"+
+				description+"\t"+
+				category+"\t"+
+				completeDate.getTimeInMillis()+"\t"+
+				user+"\t"+
+				location+"\n");
+	}
 }
