@@ -26,6 +26,7 @@ public class Task implements Serializable {
 	private Calendar completeDate;
 	private CheckBox checkBox;
 	private Date date;
+	private String location;
 	
 	public Task() {
 		this("defaultName","");
@@ -57,11 +58,12 @@ public class Task implements Serializable {
 	 * @param category	the area of life that the task is associated with (school, work, etc)
 	 * @param completeDate	the date that the users plans to have the task completed
 	 */
-	public Task(String name, String description, String category, Calendar completeDate) {
+	public Task(String name, String description, String category, Calendar completeDate, String location) {
 		this.name = name;
 		this.description = description;
 		this.category = category;
 		this.completeDate = completeDate;
+		this.setLocation(location);
 	}
 	
 	public String getName() {
@@ -130,6 +132,14 @@ public class Task implements Serializable {
 	public String completionDateToString()
 	{
 		return (this.completeDate.getTime().getMonth()+1) + "/" + this.completeDate.getTime().getDate() + "/" + this.completeDate.getTime().getYear();
+	}
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
 	}
 	
 }
