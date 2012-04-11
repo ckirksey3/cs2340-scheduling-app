@@ -13,18 +13,18 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
  */
 public class DeleteTaskListener implements OnClickListener{
 	Task task;
-	CheckBox box;
+	ManageTaskList mtl;
 	
-	public DeleteTaskListener(Task task, CheckBox box){
+	public DeleteTaskListener(Task task, ManageTaskList mtl){
 		this.task = task;
-		this.box = box;
+		this.mtl = mtl;
 	}
 	
 	/**
 	 * 
 	 */
 	public void onClick(View view) {
-		//task.remove();
+		mtl.removeTask(task);
 	}
 
 }

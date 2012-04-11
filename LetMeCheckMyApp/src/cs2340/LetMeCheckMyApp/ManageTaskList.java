@@ -38,7 +38,7 @@ public class ManageTaskList extends Activity {
 		//TODO attempt to load the user's list from storage
 		list = new ArrayList<Task>();
 		list2 = new ArrayList<Task>();
-		listAdapter = new TaskAdapter(this, R.layout.list_item, list);
+		listAdapter = new TaskAdapter(this, R.layout.list_item, list, this);
 		listview.setAdapter(listAdapter);
 
 		final DatePicker datePicker = (DatePicker) findViewById(R.id.datePickerFilter);
@@ -122,6 +122,16 @@ public class ManageTaskList extends Activity {
 				startActivityForResult(myIntent, 0);
 			}
 		});
+	}
+	
+	/*
+	 * Removes a task from both the screen and the permanent list
+	 */
+	public void removeTask(Task task)
+	{
+		list.remove(task);
+		list2.remove(task);
+		listAdapter.notifyDataSetChanged();
 	}
 
 	@Override
