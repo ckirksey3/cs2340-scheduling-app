@@ -60,7 +60,6 @@
         android:text="@string/AddTask" />
 
 
-
     <Button
         android:id="@+id/CancelAddTaskButton"
         android:layout_width="match_parent"

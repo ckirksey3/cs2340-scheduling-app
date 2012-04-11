@@ -16,7 +16,7 @@ public class TaskTest extends ActivityInstrumentationTestCase2<LetMeCheckMyAppAc
     protected void setUp() throws Exception {
         super.setUp();
         mActivity = this.getActivity();
-		testT = new Task();
+        testT = new Task();
         mActivity.getString(R.string.hello);
     }
 	

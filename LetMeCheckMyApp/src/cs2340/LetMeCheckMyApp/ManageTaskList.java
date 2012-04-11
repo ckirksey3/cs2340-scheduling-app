@@ -1,11 +1,20 @@
 package cs2340.LetMeCheckMyApp;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -22,7 +31,8 @@ import android.widget.Spinner;
  *
  */
 public class ManageTaskList extends Activity {
-
+	private final String TASK_FILE = "tasks.dat";
+	
 
 	private ArrayList<Task> list;
 	private ArrayList<Task> list2;
@@ -37,7 +47,7 @@ public class ManageTaskList extends Activity {
 		ListView listview = (ListView) findViewById(R.id.TaskList);
 		//TODO attempt to load the user's list from storage
 		list = new ArrayList<Task>();
-		list2 = new ArrayList<Task>();
+		list2 = getAllTasks("user"); //DAN: how to get current user?
 		listAdapter = new TaskAdapter(this, R.layout.list_item, list, this);
 		listview.setAdapter(listAdapter);
 
@@ -103,13 +113,12 @@ public class ManageTaskList extends Activity {
 		deleteTaskButton.setOnClickListener(new View.OnClickListener()
 		{
 			/** 
-			 * When the add new task button is clicked, this code is executed 
+			 * When the delete task button is clicked, this code is executed 
 			 * */
 			public void onClick(View view) {
-				//ListView listV = (ListView)findViewById(R.id.TaskList);
-				//Task currentTask = (Task)listV.getSelectedItem();
-				//filteredList.add(currentTask);
-				//currentTask.remove(list);
+				ListView listV = (ListView)findViewById(R.id.TaskList);
+				Task currentTask = (Task)listV.getSelectedItem();
+				removeTask(currentTask);
 			}
 		});
 		
@@ -134,6 +143,7 @@ public class ManageTaskList extends Activity {
 	{
 		list.remove(task);
 		list2.remove(task);
+		deleteTask(task);
 		listAdapter.notifyDataSetChanged();
 	}
 
@@ -177,7 +187,84 @@ public class ManageTaskList extends Activity {
 	public void setList2(ArrayList<Task> list) {
 		this.list2 = list;
 	}
-
+	
+	/**
+	 * Gets all the tasks for the specified user
+	 * @param user The user's tasks to get
+	 * @return
+	 */
+	public ArrayList<Task> getAllTasks(String user){
+		ArrayList<Task> list = new ArrayList<Task>();
+		BufferedReader br = null;
+		try {
+			br = new BufferedReader(new InputStreamReader(new FileInputStream(new File(getFilesDir()+"/"+TASK_FILE))));
+			String line;
+			while((line = br.readLine()) != null){
+				String[] items = line.split("\t");
+				if(items[5].equals(user)){
+					Calendar cal = Calendar.getInstance();
+					cal.setTime(new Date(Long.parseLong(items[4])));
+					list.add(new Task(items[0], items[2], items[3], cal, items[5], items[6]));
+				}
+			}
+		}catch(IOException e){
+			//Log.e("ManageTaskList", e.getMessage());
+		}finally {
+			try{
+				if(br != null)
+					br.close();
+			}catch(IOException e){
+				//Log.e("ManageTaskList", e.getMessage());
+			}
+		}
+		return list;
+	}
+	
+	/**
+	 * Deletes a task
+	 * @param task Task to be deleted
+	 * @return True if success, false otherwise
+	 */
+	boolean deleteTask(Task task)
+	{
+		Log.d("ManageTaskList", "Deleting "+task.getName());
+		//record all but the one being deleted to write them back
+		String str = "";
+		BufferedReader br = null;
+		try {
+			br = new BufferedReader(new InputStreamReader(new FileInputStream(new File(getFilesDir()+"/"+TASK_FILE))));
+			String line;
+			while((line = br.readLine()) != null){
+				String[] items = line.split("\t");
+				if(items[0].equals(task.getName()) && items[5].equals(task.getUser())){
+					//do nothing
+				}else{
+					str+=line+"\n";
+				}
+			}
+		}catch(IOException e){
+			//Log.e("AddTask", e.getMessage());
+		}finally {
+			try{
+				if(br != null)
+					br.close();
+			}catch(IOException e){
+				//Log.e("AddTask", e.getMessage());
+			}
+		}
+		
+		//write string from above back into the file
+		try{
+			FileOutputStream fos = openFileOutput(TASK_FILE,Context.MODE_PRIVATE);
+			fos.write(str.getBytes());
+			fos.close();
+			return true;
+		}catch(IOException e){
+			Log.e("AddTask", e.getMessage());
+			return false;
+		}
+		
+	}
 
 
 }
