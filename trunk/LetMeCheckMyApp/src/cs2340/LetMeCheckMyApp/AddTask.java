@@ -33,6 +33,7 @@ public class AddTask extends Activity {
 		final EditText taskNameET = (EditText) findViewById(R.id.TaskNameText);
 		final EditText descriptionET = (EditText) findViewById(R.id.TaskDescriptionText);
 		final DatePicker dateWidget = (DatePicker) findViewById(R.id.datePicker1);
+		final EditText locationET = (EditText) findViewById(R.id.LocationText);
 
 		//Populate Category Spinner
 		 final Spinner categorySpinner = (Spinner) findViewById(R.id.TaskCategorySpinner);
@@ -53,13 +54,14 @@ public class AddTask extends Activity {
 				String taskName = taskNameET.getText().toString();
 				String description = descriptionET.getText().toString();
 				String category = categorySpinner.getSelectedItem().toString();
+				String location = locationET.getText().toString();
 				
 				Calendar date = Calendar.getInstance();
 				date.set(Calendar.YEAR, dateWidget.getYear());
 				date.set(Calendar.MONTH, dateWidget.getMonth());
 				date.set(Calendar.DAY_OF_MONTH, dateWidget.getDayOfMonth());
 				
-				setResult(RESULT_OK, new Intent().putExtra("AddTask", new Task(taskName,description, category, date)));
+				setResult(RESULT_OK, new Intent().putExtra("AddTask", new Task(taskName,description, category, date, location)));
 				displayMessage("Task added successfully");
 				finish();
 
