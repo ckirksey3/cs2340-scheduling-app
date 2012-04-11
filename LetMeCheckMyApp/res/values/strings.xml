@@ -28,4 +28,5 @@
         <item>Home</item>
         <item>Other</item>
     </string-array>
+    <string name="AddTaskLocationHelper">Location</string>
 </resources>
