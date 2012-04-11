@@ -120,8 +120,8 @@ public class ManageTaskList extends Activity {
 			 * When the add new task button is clicked, this code is executed 
 			 * */
 			public void onClick(View view) {
-				//TODO: show map of tasks
 				Intent myIntent = new Intent(view.getContext(), GMapsActivity.class);
+				myIntent.putExtra("list", list);
 				startActivityForResult(myIntent, 0);
 			}
 		});
