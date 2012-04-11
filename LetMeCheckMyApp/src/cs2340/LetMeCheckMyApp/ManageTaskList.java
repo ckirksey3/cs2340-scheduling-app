@@ -60,10 +60,12 @@ public class ManageTaskList extends Activity {
 			 * When the add filter by date button is clicked, this code is executed 
 			 * */
 			public void onClick(View view) {
-				for (int i = 0; i< list.size(); i++){
-					list.get(i).setVisible(true);
-					listAdapter.notifyDataSetChanged();
+				//repopulate
+				list.clear();
+				for (int i = 0; i< list2.size(); i++){
+					list.add(list2.get(i));
 				}
+				listAdapter.notifyDataSetChanged();
 				
 				
 				Calendar date = Calendar.getInstance();
@@ -74,11 +76,12 @@ public class ManageTaskList extends Activity {
 				int i = list.size()-1;				
 				while (i >= 0){
 					if (list.get(i).getCompleteDate().compareTo(date) < 0){ // if not the correct category move the item to the other list for storage
-						list.get(i).setVisible(false);
-						listAdapter.notifyDataSetChanged();
+						list.remove(list.get(i));
+						
 					}
 					i--;
 				}
+				listAdapter.notifyDataSetChanged();
 				
 			}
 		});

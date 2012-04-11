@@ -7,7 +7,8 @@ public class FilterTest extends ActivityInstrumentationTestCase2<LetMeCheckMyApp
 
 	private Filter sl;
 	private ArrayList<Task> list;
-
+	private ArrayList<Task> list2;
+	
 	public FilterTest() {
 		super(LetMeCheckMyAppActivity.class);
 		// TODO Auto-generated constructor stub
@@ -18,6 +19,7 @@ public class FilterTest extends ActivityInstrumentationTestCase2<LetMeCheckMyApp
 		super.setUp();
 		ManageTaskList mtl = new ManageTaskList();
 		list = new ArrayList<Task>();
+		list2 = new ArrayList<Task>();
 		Task t0 = new Task();
 		Task t1 = new Task();
 		t0.setComplete(true);
@@ -26,37 +28,37 @@ public class FilterTest extends ActivityInstrumentationTestCase2<LetMeCheckMyApp
 		t1.setCategory("School");
 		list.add(t0);
 		list.add(t1);
+		list2.add(t0);
+		list2.add(t1);
 		mtl.setList(list);
+		mtl.setList2(list2);
 		sl = new Filter(mtl);
 
 	}
 
 	public void testCheckComplete() {
-
 		sl.checkComplete("complete");
-		assertEquals(list.get(0).isVisible(), true);
-		assertEquals(list.get(1).isVisible(), false);
-		
+		assertEquals(list.size(), 1);
+		assertEquals(list.get(0), list2.get(0));		
 	}
 
 	public void testCheckIncomplete() {
 		sl.checkIncomplete("incomplete");
-		assertEquals(list.get(0).isVisible(), false);
-		assertEquals(list.get(1).isVisible(), true);
+		assertEquals(list.size(), 1);
+		assertEquals(list.get(0), list2.get(1));
 	}
 
 	public void testFilterByCat() {
 		sl.filterByCat("Work");
-		assertEquals(list.get(0).isVisible(), true);
-		assertEquals(list.get(1).isVisible(), false);
+		assertEquals(list.size(), 1);
+		assertEquals(list.get(0), list2.get(0));
 	}
 
 	public void testRepopulate() {
-		list.get(0).setVisible(false);
-		list.get(1).setVisible(true);
+		list.clear();
 		sl.repopulate();
-		assertEquals(list.get(0).isVisible(), true);
-		assertEquals(list.get(1).isVisible(), true);
+		assertEquals(list.get(0), list2.get(0));
+		assertEquals(list.get(1), list2.get(1));
 	}
 	
 }
