@@ -15,13 +15,13 @@ public class Filter implements OnItemSelectedListener {
 	private ArrayList<Task> list;
 	private ArrayList<Task> list2;
 	private ArrayAdapter<Task> listAdapter;
-	
+
 	public Filter (ManageTaskList x){
 		list = x.getList();
 		list2 = x.getList2();
 		listAdapter = x.getListAdapter();
 	}
-	
+
 	/**
 	 * Method executed when the user selects an option from the filter Spinner
 	 * @param parent	the Spinner that raised the event
@@ -36,33 +36,25 @@ public class Filter implements OnItemSelectedListener {
 		updateList();
 	}
 
-	
+
 	/**
 	 * Executes if none of the options are selected by the user
 	 */
 	public void onNothingSelected(AdapterView<?> parent) {
-		/*
-		for (int i = 0; i< t.size(); i++){
-			t.get(i).setVisible(true);
-		}
-		*/
+
 	}
-	
+
 	/**
 	 * sets all tasks to visible again
 	 */
 	public void repopulate(){
-		/*
-		for (int i = 0; i< t.size(); i++){
-			t.get(i).setVisible(true);
-		}
-		*/
-		listAdapter.clear();
+
+		list.clear();
 		for (int i = 0; i< list2.size(); i++){
-			listAdapter.add(list2.get(i));
+			list.add(list2.get(i));
 		}
 	}
-	
+
 	/**
 	 * filters the list
 	 * 
@@ -70,21 +62,21 @@ public class Filter implements OnItemSelectedListener {
 	 * @param s the category chosen from the spinner
 	 */
 	public void filter(AdapterView<?> parent, String s){
-		
+
 		if (checkComplete(s))
 			return;
-		
+
 		else if (checkIncomplete(s))
 			return;
-		
+
 		else if (s.equals(parent.getItemAtPosition(0))) // check if empty
 			return;
-			
+
 		else 
 			filterByCat(s);
-		
+
 	}
-	
+
 	/**
 	 * filters the list by completed status, keeping only completed tasks
 	 * 
@@ -92,28 +84,19 @@ public class Filter implements OnItemSelectedListener {
 	 * @return if s was "complete"
 	 */
 	public boolean checkComplete(String s){
-		/*
-		if (s.equalsIgnoreCase("complete")) {
-			for (int i = 0; i< t.size(); i++){
-				if (t.get(i).isComplete() == false){ // if not the correct category move the item to the other list for storage
-					t.get(i).setVisible(false);
-				}
-			}
-			return true;
-		}
-		return false;
-		*/
+
 		if (s.equalsIgnoreCase("complete")) {
 			for (int i=list.size()-1; i>=0; i--){
-				if (listAdapter.getItem(i).isComplete() == false){ // if not the correct category move the item to the other list for storage
-					listAdapter.remove(listAdapter.getItem(i));
+				if (list.get(i).isComplete() == false){ // if not the correct category move the item to the other list for storage
+					list.remove(list.get(i));
+
 				}
 			}
 			return true;
 		}
 		return false;
 	}
-	
+
 	/**
 	 * filters the list by completed status, keeping only incomplete tasks
 	 * 
@@ -121,44 +104,33 @@ public class Filter implements OnItemSelectedListener {
 	 * @return if s was "complete"
 	 */
 	public boolean checkIncomplete(String s){
-		/*if (s.equalsIgnoreCase("incomplete")) {
-			for (int i = 0; i< t.size(); i++){
-				if (t.get(i).isComplete() == true){ // if not the correct category 
-					t.get(i).setVisible(false);
-				}
-			}
-			return true;
-		}
-		return false;*/
+
 		if (s.equalsIgnoreCase("incomplete")) {
 			for (int i=list.size()-1; i>=0; i--){
-				if (listAdapter.getItem(i).isComplete() == true){ // if not the correct category
-					listAdapter.remove(listAdapter.getItem(i));
+				if (list.get(i).isComplete() == true){ // if not the correct category move the item to the other list for storage
+					list.remove(list.get(i));
+
 				}
 			}
 			return true;
 		}
 		return false;
 	}
-	
+
 	/**
 	 * filters by category selected by spinner
 	 * @param s the category chosen
 	 */
 	public void filterByCat(String s){
-		/*
-		for (int i = 0; i< t.size(); i++){
-			if (!t.get(i).getCategory().equalsIgnoreCase(s)){ // if not the correct category
-				t.get(i).setVisible(false);
-			}
-		}*/
+
 		for (int i=list.size()-1; i>=0; i--){
-			if (!listAdapter.getItem(i).getCategory().equalsIgnoreCase(s)){ // if not the correct category
-				listAdapter.remove(listAdapter.getItem(i));
+			if (!list.get(i).getCategory().equalsIgnoreCase(s)){ // if not the correct category
+				list.remove(list.get(i));
+
 			}
 		}
 	}
-	
+
 	public void updateList(){
 		listAdapter.notifyDataSetChanged();
 	}

@@ -84,12 +84,6 @@ public class TaskAdapter extends ArrayAdapter<Task> {
 		taskBox.setChecked(task.isComplete());
 		trashButton.setOnClickListener(new DeleteTaskListener(task, mtl));
 
-		if (task.isVisible()){
-			taskView.setVisibility(View.VISIBLE);
-		}
-		else if (!task.isVisible()){
-			taskView.setVisibility(View.GONE);
-		} 
 		
 		return taskView;
 		
