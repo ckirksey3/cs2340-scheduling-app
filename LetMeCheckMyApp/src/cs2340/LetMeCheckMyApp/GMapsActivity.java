@@ -3,6 +3,7 @@ package cs2340.LetMeCheckMyApp;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import android.location.Address;
 import android.location.Geocoder;
@@ -63,7 +64,7 @@ public class GMapsActivity extends MapActivity {
 
 		controller = mapView.getController();
 
-		Geocoder geocoder = new Geocoder(this);
+		Geocoder geocoder = new Geocoder(this, Locale.US);
 		for (int i = 0; i < list.size(); i++) {
 			try {
 				List<Address> address = geocoder.getFromLocationName(list.get(i).getLocation(), 1);
