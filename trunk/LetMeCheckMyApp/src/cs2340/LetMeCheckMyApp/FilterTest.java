@@ -42,6 +42,35 @@ public class FilterTest extends ActivityInstrumentationTestCase2<LetMeCheckMyApp
 		assertEquals(list.get(0), list2.get(0));		
 	}
 
+	public void testEmptyRepopulate(){
+		list.clear();
+		list2.clear();
+		sl.repopulate();
+		assertEquals(list.size(), 0);
+	
+	}
+	
+	public void testEmptyComplete(){
+		list.clear();
+		list2.clear();
+		sl.checkComplete("complete");
+		assertEquals(list.size(), 0);
+	}
+	
+	public void testEmptyInomplete(){
+		list.clear();
+		list2.clear();
+		sl.checkIncomplete("incomplete");
+		assertEquals(list.size(), 0);
+	}
+	
+	public void testEmptyFilter(){
+		list.clear();
+		list2.clear();
+		sl.filterByCat("Work");
+		assertEquals(list.size(), 0);
+	}
+	
 	public void testCheckIncomplete() {
 		sl.checkIncomplete("incomplete");
 		assertEquals(list.size(), 1);
