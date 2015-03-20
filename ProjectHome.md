@@ -1,0 +1,1 @@
+This application lets users keep track of their upcoming tasks through both a simple list and a map interface that relates tasks based on geographical location.
